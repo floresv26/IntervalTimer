@@ -10,11 +10,13 @@
 		5E82DB0E12E21907A7832A9A /* Pods_IntervalTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4E6B741BF8F0397C9C9A5A /* Pods_IntervalTimer.framework */; };
 		8C0B930A926E3E432C8BC0B6 /* Pods_IntervalTimerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91638E13016A43947EDF5E25 /* Pods_IntervalTimerTests.framework */; };
 		A303134421EF8A6500AC1987 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A303134321EF8A6500AC1987 /* AppDelegate.swift */; };
-		A303134621EF8A6500AC1987 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A303134521EF8A6500AC1987 /* ViewController.swift */; };
 		A303134921EF8A6500AC1987 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A303134721EF8A6500AC1987 /* Main.storyboard */; };
 		A303134B21EF8A6500AC1987 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A303134A21EF8A6500AC1987 /* Assets.xcassets */; };
 		A303134E21EF8A6500AC1987 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A303134C21EF8A6500AC1987 /* LaunchScreen.storyboard */; };
-		A303135921EF8A6600AC1987 /* IntervalTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A303135821EF8A6600AC1987 /* IntervalTimerTests.swift */; };
+		A303136421EFD64A00AC1987 /* TimedIntervalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A303136321EFD64A00AC1987 /* TimedIntervalTests.swift */; };
+		A303136A21EFD6C800AC1987 /* TimedInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = A303136921EFD6C800AC1987 /* TimedInterval.swift */; };
+		A303136C21EFDE9300AC1987 /* QuickLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A303136B21EFDE9300AC1987 /* QuickLogViewController.swift */; };
+		A303136F21EFDF1D00AC1987 /* QuickLogViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A303136E21EFDF1D00AC1987 /* QuickLogViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,14 +37,16 @@
 		91638E13016A43947EDF5E25 /* Pods_IntervalTimerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IntervalTimerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A303134021EF8A6500AC1987 /* IntervalTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntervalTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A303134321EF8A6500AC1987 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A303134521EF8A6500AC1987 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A303134821EF8A6500AC1987 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A303134A21EF8A6500AC1987 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A303134D21EF8A6500AC1987 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A303134F21EF8A6500AC1987 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A303135421EF8A6600AC1987 /* IntervalTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntervalTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A303135821EF8A6600AC1987 /* IntervalTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalTimerTests.swift; sourceTree = "<group>"; };
 		A303135A21EF8A6600AC1987 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A303136321EFD64A00AC1987 /* TimedIntervalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimedIntervalTests.swift; sourceTree = "<group>"; };
+		A303136921EFD6C800AC1987 /* TimedInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimedInterval.swift; sourceTree = "<group>"; };
+		A303136B21EFDE9300AC1987 /* QuickLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLogViewController.swift; sourceTree = "<group>"; };
+		A303136E21EFDF1D00AC1987 /* QuickLogViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLogViewControllerTests.swift; sourceTree = "<group>"; };
 		AB9004FCD0A9A2F12CDF8283 /* Pods-IntervalTimerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntervalTimerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IntervalTimerTests/Pods-IntervalTimerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,7 +103,9 @@
 			isa = PBXGroup;
 			children = (
 				A303134321EF8A6500AC1987 /* AppDelegate.swift */,
-				A303134521EF8A6500AC1987 /* ViewController.swift */,
+				A303136621EFD67700AC1987 /* Model */,
+				A303136721EFD67B00AC1987 /* View */,
+				A303136821EFD67F00AC1987 /* Controller */,
 				A303134721EF8A6500AC1987 /* Main.storyboard */,
 				A303134A21EF8A6500AC1987 /* Assets.xcassets */,
 				A303134C21EF8A6500AC1987 /* LaunchScreen.storyboard */,
@@ -111,10 +117,50 @@
 		A303135721EF8A6600AC1987 /* IntervalTimerTests */ = {
 			isa = PBXGroup;
 			children = (
-				A303135821EF8A6600AC1987 /* IntervalTimerTests.swift */,
+				A303136521EFD66F00AC1987 /* Model */,
+				A303136D21EFDF0D00AC1987 /* Controller */,
 				A303135A21EF8A6600AC1987 /* Info.plist */,
 			);
 			path = IntervalTimerTests;
+			sourceTree = "<group>";
+		};
+		A303136521EFD66F00AC1987 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A303136321EFD64A00AC1987 /* TimedIntervalTests.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A303136621EFD67700AC1987 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A303136921EFD6C800AC1987 /* TimedInterval.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A303136721EFD67B00AC1987 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A303136821EFD67F00AC1987 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A303136B21EFDE9300AC1987 /* QuickLogViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A303136D21EFDF0D00AC1987 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A303136E21EFDF1D00AC1987 /* QuickLogViewControllerTests.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		E421CC46BFCE7FA34C99105C /* Pods */ = {
@@ -291,8 +337,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A303134621EF8A6500AC1987 /* ViewController.swift in Sources */,
+				A303136A21EFD6C800AC1987 /* TimedInterval.swift in Sources */,
 				A303134421EF8A6500AC1987 /* AppDelegate.swift in Sources */,
+				A303136C21EFDE9300AC1987 /* QuickLogViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,7 +347,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A303135921EF8A6600AC1987 /* IntervalTimerTests.swift in Sources */,
+				A303136421EFD64A00AC1987 /* TimedIntervalTests.swift in Sources */,
+				A303136F21EFDF1D00AC1987 /* QuickLogViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
