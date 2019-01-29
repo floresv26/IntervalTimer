@@ -18,6 +18,10 @@ class QuickLogViewController: UIViewController {
     @IBOutlet weak var createActivityStackView: UIStackView!
     @IBOutlet weak var addActivityTextField: UITextField!
     @IBOutlet weak var addActivityButton: UIButton!
+    @IBOutlet weak var dataEntryStackView: UIStackView!
+    @IBOutlet weak var dataEntryCollectionView: UICollectionView!
+    @IBOutlet weak var addIntervalButton: UIButton!
+    @IBOutlet weak var timeLabel: UILabel!
     
     let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonPressed))
     
@@ -41,16 +45,36 @@ class QuickLogViewController: UIViewController {
         }
     }
     
+    //    func addActivityToRealm(activity: Activity) {
+    //        do {
+    //            try realm.write {
+    //                realm.add(activity)
+    //            }
+    //        } catch {
+    //            print("Error writing data to realm, \(error)")
+    //        }
+    //    }
     
-    // MARK: -
+    
+    
+    
+    //    func addTimedIntervalTitleToRealm(title: String) {
+    //        do{
+    //            try realm.write {
+    //                realm.add(<#T##object: Object##Object#>)
+    //            }
+    //        }
+    //    }
+    //
+    
+    
+    // MARK: - Data Entry
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
         setActivityNameLabelText(from: addActivityTextField)
         resetCreateActivityStackView()
         hideCreateActivityStackView()
     }
-    
-
     
     func setActivityNameLabelText(from textField: UITextField) {
         guard let validatedText = textField.text else {
@@ -75,30 +99,7 @@ class QuickLogViewController: UIViewController {
     @objc func cancelButtonPressed() {
         
     }
-    
-    
-    
-//    func addActivityToRealm(activity: Activity) {
-//        do {
-//            try realm.write {
-//                realm.add(activity)
-//            }
-//        } catch {
-//            print("Error writing data to realm, \(error)")
-//        }
-//    }
-    
 
- 
-    
-//    func addTimedIntervalTitleToRealm(title: String) {
-//        do{
-//            try realm.write {
-//                realm.add(<#T##object: Object##Object#>)
-//            }
-//        }
-//    }
-//
     
     // MARK: Animations
     func hideCreateActivityStackView() {

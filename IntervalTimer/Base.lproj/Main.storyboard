@@ -147,18 +147,72 @@
                                     <constraint firstAttribute="bottom" secondItem="wvL-HT-63S" secondAttribute="bottom" constant="5" id="ws2-y8-YGM"/>
                                 </constraints>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axc-g9-bIl" userLabel="TimeLabel">
+                                <rect key="frame" x="16" y="330" width="343" height="325"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" restorationIdentifier="DataEntryStackView" axis="vertical" distribution="fillProportionally" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="d72-Pj-oEB" userLabel="DataEntryStackView">
+                                <rect key="frame" x="16" y="136" width="343" height="178"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="251" restorationIdentifier="DataEntryCollectionView" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lTG-Vz-vx9">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Sc1-la-VlX">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" id="2Jy-o5-QNW">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </view>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXI-Vt-757">
+                                        <rect key="frame" x="0.0" y="144" width="343" height="34"/>
+                                        <state key="normal" title="Add Interval">
+                                            <color key="titleColor" red="0.023529411760000001" green="0.1529411765" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="yXI-Vt-757" secondAttribute="bottom" id="BLc-4z-jHE"/>
+                                    <constraint firstItem="lTG-Vz-vx9" firstAttribute="leading" secondItem="d72-Pj-oEB" secondAttribute="leading" id="GC5-g2-1KH"/>
+                                    <constraint firstAttribute="trailing" secondItem="lTG-Vz-vx9" secondAttribute="trailing" id="W2T-Z8-gr8"/>
+                                    <constraint firstItem="yXI-Vt-757" firstAttribute="top" secondItem="lTG-Vz-vx9" secondAttribute="bottom" constant="16" id="cnG-li-An3"/>
+                                    <constraint firstItem="lTG-Vz-vx9" firstAttribute="top" secondItem="d72-Pj-oEB" secondAttribute="top" id="gGO-w1-9LP"/>
+                                    <constraint firstItem="yXI-Vt-757" firstAttribute="top" secondItem="lTG-Vz-vx9" secondAttribute="bottom" constant="16" id="p24-8c-FwP"/>
+                                    <constraint firstItem="yXI-Vt-757" firstAttribute="leading" secondItem="d72-Pj-oEB" secondAttribute="leading" id="sVW-4B-HoY"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="pAy-g6-GyA" firstAttribute="trailing" secondItem="e6o-fp-3Sf" secondAttribute="trailing" constant="16" id="5Je-oh-wed"/>
                             <constraint firstItem="8Rw-mm-Jqc" firstAttribute="leading" secondItem="pAy-g6-GyA" secondAttribute="leading" constant="16" id="7eq-TC-1Ha"/>
+                            <constraint firstItem="axc-g9-bIl" firstAttribute="top" secondItem="d72-Pj-oEB" secondAttribute="bottom" constant="16" id="BAd-qx-mu3"/>
                             <constraint firstItem="Gkt-0p-t39" firstAttribute="top" secondItem="pAy-g6-GyA" secondAttribute="top" constant="16" id="HiA-nt-4Bk"/>
                             <constraint firstItem="e6o-fp-3Sf" firstAttribute="leading" secondItem="pAy-g6-GyA" secondAttribute="leading" constant="16" id="IKv-OU-49C"/>
                             <constraint firstItem="pAy-g6-GyA" firstAttribute="trailing" secondItem="8Rw-mm-Jqc" secondAttribute="trailing" constant="16" id="Rkq-OF-FVJ"/>
+                            <constraint firstItem="axc-g9-bIl" firstAttribute="leading" secondItem="pAy-g6-GyA" secondAttribute="leading" constant="16" id="THH-v5-RMW"/>
+                            <constraint firstItem="d72-Pj-oEB" firstAttribute="leading" secondItem="pAy-g6-GyA" secondAttribute="leading" constant="16" id="Z5I-hH-hDq"/>
+                            <constraint firstItem="d72-Pj-oEB" firstAttribute="top" secondItem="Gkt-0p-t39" secondAttribute="bottom" constant="8" id="ZqE-xr-4fQ"/>
+                            <constraint firstItem="pAy-g6-GyA" firstAttribute="trailing" secondItem="d72-Pj-oEB" secondAttribute="trailing" constant="16" id="e14-3B-Bh9"/>
                             <constraint firstItem="e6o-fp-3Sf" firstAttribute="top" secondItem="pAy-g6-GyA" secondAttribute="top" constant="16" id="iKP-Oj-dtB"/>
                             <constraint firstItem="Gkt-0p-t39" firstAttribute="leading" secondItem="pAy-g6-GyA" secondAttribute="leading" constant="16" id="inl-n7-rLe"/>
                             <constraint firstItem="pAy-g6-GyA" firstAttribute="trailing" secondItem="Gkt-0p-t39" secondAttribute="trailing" constant="16" id="jNB-jg-5SO"/>
+                            <constraint firstItem="8Rw-mm-Jqc" firstAttribute="top" secondItem="axc-g9-bIl" secondAttribute="bottom" constant="24" id="nJs-th-4bb"/>
+                            <constraint firstItem="pAy-g6-GyA" firstAttribute="trailing" secondItem="axc-g9-bIl" secondAttribute="trailing" constant="16" id="pzm-cA-Ki4"/>
                             <constraint firstItem="8Rw-mm-Jqc" firstAttribute="bottom" secondItem="pAy-g6-GyA" secondAttribute="bottom" id="rX2-VV-NqS"/>
+                            <constraint firstItem="axc-g9-bIl" firstAttribute="top" secondItem="d72-Pj-oEB" secondAttribute="bottom" constant="16" id="sE2-m0-Kcg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pAy-g6-GyA"/>
                     </view>
@@ -167,7 +221,11 @@
                         <outlet property="activityNameLabel" destination="e6o-fp-3Sf" id="zA3-xO-tZV"/>
                         <outlet property="addActivityButton" destination="Ms0-fI-DyP" id="O6L-97-dEs"/>
                         <outlet property="addActivityTextField" destination="OOl-YV-SIx" id="0RM-B9-9KI"/>
+                        <outlet property="addIntervalButton" destination="yXI-Vt-757" id="efk-qZ-oew"/>
                         <outlet property="createActivityStackView" destination="Gkt-0p-t39" id="O17-Ii-3Qe"/>
+                        <outlet property="dataEntryCollectionView" destination="lTG-Vz-vx9" id="RBJ-4T-WfW"/>
+                        <outlet property="dataEntryStackView" destination="d72-Pj-oEB" id="qc5-Od-WGT"/>
+                        <outlet property="timeLabel" destination="axc-g9-bIl" id="SX3-IM-abQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P0b-RV-5Tt" userLabel="First Responder" sceneMemberID="firstResponder"/>

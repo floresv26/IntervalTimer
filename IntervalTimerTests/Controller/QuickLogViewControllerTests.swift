@@ -41,7 +41,9 @@ class QuickLogViewControllerTests: XCTestCase {
         XCTAssertNotNil(sut.activityNameLabel)
     }
     
-    
+    func test_DataEntryCollectionView_AfterShowDataEntryCollectionView_IsNotNil() {
+        XCTAssertNotNil(sut.dataEntryCollectionView)
+    }
     
 //    func test_ActivityName_WriteDataToRealm_IsNotNil() {
 //        sut.setActivityName(name: "Cobra Bag")
