@@ -24,7 +24,31 @@ class QuickLogViewControllerTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
     
+    func test_CreateActivityStackView_AfterViewDidLoad_IsNotNil() {
+        XCTAssertNotNil(sut.createActivityStackView)
+    }
+    
+    func test_AddActivityTextField_AfterViewDidLoad_IsNotNil() {
+        XCTAssertNotNil(sut.addActivityTextField)
+    }
+    
+    func test_AddActivityButton_AfterViewDidLoad_IsNotNil() {
+        XCTAssertNotNil(sut.addActivityButton)
+    }
+    
+    func test_ActivityNameLabel_AfterViewDidLoad_IsNotNil() {
+        XCTAssertNotNil(sut.activityNameLabel)
+    }
+    
+    
+    
+//    func test_ActivityName_WriteDataToRealm_IsNotNil() {
+//        sut.setActivityName(name: "Cobra Bag")
+//        sut.addActivityToRealm(activity: sut.activity)
+//        
+//        XCTAssertEqual(sut.realm.objects(Activity.self).count, 1)
+//        
+//    }
 
 }

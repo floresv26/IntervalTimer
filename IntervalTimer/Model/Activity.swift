@@ -1,5 +1,5 @@
 //
-//  TimedInterval.swift
+//  Activity.swift
 //  IntervalTimer
 //
 //  Created by Vanessa Flores on 1/16/19.
@@ -10,27 +10,22 @@ import Foundation
 import Realm
 import RealmSwift
 
-class TimedInterval: Object {
-    @objc dynamic var title: String
-    @objc dynamic var hour: Int
-    @objc dynamic var minute: Int
-    @objc dynamic var second: Int
+class Activity: Object {
+    @objc dynamic var name: String
+    var timedIntervals: [TimedInterval]
     
     required init() {
-        self.title = ""
-        self.hour = 0
-        self.minute = 0
-        self.second = 0
+        self.name = ""
+        self.timedIntervals = []
         
         super.init()
     }
     
-    convenience required init(title: String, hour: Int, minute: Int, second: Int) {
+    convenience required init(name: String, timedIntervals: [TimedInterval]) {
         self.init()
-        self.title = title
-        self.hour = hour
-        self.minute = minute
-        self.second = second
+        self.name = name
+        self.timedIntervals = timedIntervals
+        
     }
     
     required init(realm: RLMRealm, schema: RLMObjectSchema) {
@@ -41,5 +36,5 @@ class TimedInterval: Object {
         fatalError("init(value:schema:) has not been implemented")
     }
     
-
+   
 }

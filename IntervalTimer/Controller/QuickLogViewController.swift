@@ -7,24 +7,134 @@
 //
 
 import UIKit
+import RealmSwift
 
 class QuickLogViewController: UIViewController {
+    
+    var realm: Realm!
+    var activity: Activity!
 
+    @IBOutlet weak var activityNameLabel: UILabel!
+    @IBOutlet weak var createActivityStackView: UIStackView!
+    @IBOutlet weak var addActivityTextField: UITextField!
+    @IBOutlet weak var addActivityButton: UIButton!
+    
+    let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonPressed))
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setupRealm()
+        addActivityTextField.delegate = self
+        
+//        print(Realm.Configuration.defaultConfiguration.fileURL)
+    }
+    
+    // MARK: - Realm
+    
+    func setupRealm() {
+        do {
+            realm = try Realm()
+        } catch let error as NSError {
+            print("Error initializing new realm, \(error)")
+        }
+    }
+    
+    
+    // MARK: -
+    
+    @IBAction func addButtonPressed(_ sender: UIButton) {
+        setActivityNameLabelText(from: addActivityTextField)
+        resetCreateActivityStackView()
+        hideCreateActivityStackView()
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func setActivityNameLabelText(from textField: UITextField) {
+        guard let validatedText = textField.text else {
+            return
+        }
+        
+        activityNameLabel.text = validatedText.trimmingCharacters(in: .whitespacesAndNewlines)
+        activityNameLabel.isHidden = false
+        enableCancelButton()
     }
-    */
+    
+    func resetCreateActivityStackView() {
+        addActivityTextField.text = ""
+        addActivityTextField.resignFirstResponder()
+        addActivityButton.isEnabled = false
+    }
+    
+    func enableCancelButton() {
+        cancelButton.isEnabled = true
+    }
+    
+    @objc func cancelButtonPressed() {
+        
+    }
+    
+    
+    
+//    func addActivityToRealm(activity: Activity) {
+//        do {
+//            try realm.write {
+//                realm.add(activity)
+//            }
+//        } catch {
+//            print("Error writing data to realm, \(error)")
+//        }
+//    }
+    
+
+ 
+    
+//    func addTimedIntervalTitleToRealm(title: String) {
+//        do{
+//            try realm.write {
+//                realm.add(<#T##object: Object##Object#>)
+//            }
+//        }
+//    }
+//
+    
+    // MARK: Animations
+    func hideCreateActivityStackView() {
+        UIStackView.animate(withDuration: 0, animations: {
+            self.createActivityStackView.alpha = 0
+        }) {
+            _ in self.createActivityStackView.isHidden = true
+        }
+    }
+
+
 
 }
+
+extension QuickLogViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == addActivityTextField {
+            addActivityButton.isEnabled = true
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if (addActivityTextField.text?.isEmpty)! {
+            addActivityButton.isEnabled = false
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == addActivityTextField {
+            setActivityNameLabelText(from: addActivityTextField)
+            resetCreateActivityStackView()
+            hideCreateActivityStackView()
+        }
+        return true
+    }
+
+}
+
