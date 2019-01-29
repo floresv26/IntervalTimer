@@ -21,6 +21,7 @@
 		A303137321EFE7C900AC1987 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A303137221EFE7C900AC1987 /* Activity.swift */; };
 		A341F66C21FFDBE000214B35 /* DataEntryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A341F66A21FFDBE000214B35 /* DataEntryCollectionViewCell.swift */; };
 		A341F66D21FFDBE000214B35 /* DataEntryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A341F66B21FFDBE000214B35 /* DataEntryCollectionViewCell.xib */; };
+		A341F66F220108DD00214B35 /* DataEntryCollectionViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A341F66E220108DD00214B35 /* DataEntryCollectionViewCellTests.swift */; };
 		A3F9BA9E21F4127F0001CED5 /* DataEntryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F9BA9D21F4127F0001CED5 /* DataEntryTextField.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		A303137221EFE7C900AC1987 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		A341F66A21FFDBE000214B35 /* DataEntryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntryCollectionViewCell.swift; sourceTree = "<group>"; };
 		A341F66B21FFDBE000214B35 /* DataEntryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DataEntryCollectionViewCell.xib; sourceTree = "<group>"; };
+		A341F66E220108DD00214B35 /* DataEntryCollectionViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntryCollectionViewCellTests.swift; sourceTree = "<group>"; };
 		A3F9BA9D21F4127F0001CED5 /* DataEntryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntryTextField.swift; sourceTree = "<group>"; };
 		AB9004FCD0A9A2F12CDF8283 /* Pods-IntervalTimerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntervalTimerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IntervalTimerTests/Pods-IntervalTimerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,6 +151,7 @@
 				A303136921EFD6C800AC1987 /* TimedInterval.swift */,
 				A303137221EFE7C900AC1987 /* Activity.swift */,
 				A3F9BA9D21F4127F0001CED5 /* DataEntryTextField.swift */,
+				A341F66A21FFDBE000214B35 /* DataEntryCollectionViewCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -156,7 +159,6 @@
 		A303136721EFD67B00AC1987 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A341F66A21FFDBE000214B35 /* DataEntryCollectionViewCell.swift */,
 				A341F66B21FFDBE000214B35 /* DataEntryCollectionViewCell.xib */,
 			);
 			path = View;
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				A303136E21EFDF1D00AC1987 /* QuickLogViewControllerTests.swift */,
+				A341F66E220108DD00214B35 /* DataEntryCollectionViewCellTests.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				A303136421EFD64A00AC1987 /* TimedIntervalTests.swift in Sources */,
 				A303137121EFE77300AC1987 /* ActivityTests.swift in Sources */,
 				A303136F21EFDF1D00AC1987 /* QuickLogViewControllerTests.swift in Sources */,
+				A341F66F220108DD00214B35 /* DataEntryCollectionViewCellTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,7 +538,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vanessaflores.IntervalTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -554,7 +558,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vanessaflores.IntervalTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -148,37 +148,37 @@
                                 </constraints>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axc-g9-bIl" userLabel="TimeLabel">
-                                <rect key="frame" x="16" y="330" width="343" height="325"/>
+                                <rect key="frame" x="16" y="320" width="343" height="335"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" restorationIdentifier="DataEntryStackView" axis="vertical" distribution="fillProportionally" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="d72-Pj-oEB" userLabel="DataEntryStackView">
-                                <rect key="frame" x="16" y="136" width="343" height="178"/>
+                                <rect key="frame" x="16" y="136" width="343" height="168"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="251" restorationIdentifier="DataEntryCollectionView" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lTG-Vz-vx9">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="128"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Sc1-la-VlX">
-                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="itemSize" width="343" height="116"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" id="2Jy-o5-QNW">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="116"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="116"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </view>
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXI-Vt-757">
-                                        <rect key="frame" x="0.0" y="144" width="343" height="34"/>
-                                        <state key="normal" title="Add Interval">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXI-Vt-757">
+                                        <rect key="frame" x="0.0" y="144" width="343" height="24"/>
+                                        <state key="normal" title="Add Interval" image="circle_add">
                                             <color key="titleColor" red="0.023529411760000001" green="0.1529411765" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
@@ -272,5 +272,6 @@
     </scenes>
     <resources>
         <image name="add_dark" width="24" height="24"/>
+        <image name="circle_add" width="24" height="24"/>
     </resources>
 </document>
