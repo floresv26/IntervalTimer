@@ -23,8 +23,6 @@ class QuickLogViewController: UIViewController {
     @IBOutlet weak var addIntervalButton: UIButton!
     @IBOutlet weak var timeLabel: UILabel!
     
-    let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonPressed))
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +72,7 @@ class QuickLogViewController: UIViewController {
         setActivityNameLabelText(from: addActivityTextField)
         resetCreateActivityStackView()
         hideCreateActivityStackView()
+        showDataEntryCollectionView()
     }
     
     func setActivityNameLabelText(from textField: UITextField) {
@@ -92,12 +91,19 @@ class QuickLogViewController: UIViewController {
         addActivityButton.isEnabled = false
     }
     
+    func showDataEntryCollectionView() {
+        dataEntryStackView.isHidden = false
+    }
+    
     func enableCancelButton() {
-        cancelButton.isEnabled = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonPressed))
     }
     
     @objc func cancelButtonPressed() {
-        
+        dataEntryStackView.isHidden = true
+        activityNameLabel.isHidden = true
+        showCreateActivityStackView()
+        print("Cancel button tapped")
     }
 
     
@@ -109,10 +115,20 @@ class QuickLogViewController: UIViewController {
             _ in self.createActivityStackView.isHidden = true
         }
     }
+    
+    func showCreateActivityStackView() {
+        UIStackView.animate(withDuration: 0, animations: {
+            self.createActivityStackView.alpha = 1
+        }) {
+            _ in self.createActivityStackView.isHidden = false
+        }
+    }
 
 
 
 }
+
+// MARK: - UITextFieldDelegate
 
 extension QuickLogViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -133,9 +149,20 @@ extension QuickLogViewController: UITextFieldDelegate {
             setActivityNameLabelText(from: addActivityTextField)
             resetCreateActivityStackView()
             hideCreateActivityStackView()
+            showDataEntryCollectionView()
         }
         return true
     }
 
 }
+
+
+// MARK: - UICollectionViewDelegate
+extension QuickLogViewController: UICollectionViewDelegate {
+    
+}
+
+
+
+// MARK: - UICollectionViewDataSource
 

@@ -22,9 +22,9 @@ class ActivityTests: XCTestCase {
     }
 
     func test_Activity_CanBeInitialized() {
-        let timedInterval = TimedInterval(title: "Jab", hour: 0, minute: 1, second: 0)
+        let timedInterval = TimedInterval(title: "Jab", hour: 0, minute: 1, second: 0, timestamp: Date())
         let timedIntervalsArray = [timedInterval]
-        let activity = Activity(name: "Cobra Bag", timedIntervals: timedIntervalsArray)
+        let activity = Activity(name: "Cobra Bag", timestamp: Date(), timedIntervals: timedIntervalsArray)
         
         XCTAssertEqual(activity.name, "Cobra Bag")
         XCTAssertEqual(timedIntervalsArray[0].title, "Jab")

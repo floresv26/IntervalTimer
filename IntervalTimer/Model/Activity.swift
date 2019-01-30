@@ -12,18 +12,21 @@ import RealmSwift
 
 class Activity: Object {
     @objc dynamic var name: String
+    @objc dynamic var timeStamp: Date
     var timedIntervals: [TimedInterval]
     
     required init() {
         self.name = ""
+        self.timeStamp = Date()
         self.timedIntervals = []
         
         super.init()
     }
     
-    convenience required init(name: String, timedIntervals: [TimedInterval]) {
+    convenience required init(name: String, timestamp: Date, timedIntervals: [TimedInterval]) {
         self.init()
         self.name = name
+        self.timeStamp = timestamp
         self.timedIntervals = timedIntervals
         
     }

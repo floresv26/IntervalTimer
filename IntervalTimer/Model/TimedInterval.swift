@@ -15,22 +15,25 @@ class TimedInterval: Object {
     @objc dynamic var hour: Int
     @objc dynamic var minute: Int
     @objc dynamic var second: Int
+    @objc dynamic var timeStamp: Date
     
     required init() {
         self.title = ""
         self.hour = 0
         self.minute = 0
         self.second = 0
+        self.timeStamp = Date()
         
         super.init()
     }
     
-    convenience required init(title: String, hour: Int, minute: Int, second: Int) {
+    convenience required init(title: String, hour: Int, minute: Int, second: Int, timestamp: Date) {
         self.init()
         self.title = title
         self.hour = hour
         self.minute = minute
         self.second = second
+        self.timeStamp = timestamp
     }
     
     required init(realm: RLMRealm, schema: RLMObjectSchema) {

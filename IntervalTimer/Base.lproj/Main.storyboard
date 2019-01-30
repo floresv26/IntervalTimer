@@ -153,7 +153,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" restorationIdentifier="DataEntryStackView" axis="vertical" distribution="fillProportionally" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="d72-Pj-oEB" userLabel="DataEntryStackView">
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="DataEntryStackView" axis="vertical" distribution="fillProportionally" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="d72-Pj-oEB" userLabel="DataEntryStackView">
                                 <rect key="frame" x="16" y="136" width="343" height="168"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="251" restorationIdentifier="DataEntryCollectionView" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lTG-Vz-vx9">

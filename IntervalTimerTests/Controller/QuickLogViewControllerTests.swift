@@ -41,7 +41,7 @@ class QuickLogViewControllerTests: XCTestCase {
         XCTAssertNotNil(sut.activityNameLabel)
     }
     
-    func test_DataEntryCollectionView_AfterShowDataEntryCollectionView_IsNotNil() {
+    func test_DataEntryCollectionView_AfterShowDataEntryStackView_IsNotNil() {
         XCTAssertNotNil(sut.dataEntryCollectionView)
     }
     
