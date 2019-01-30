@@ -42,20 +42,37 @@ class QuickLogScrollView: UIScrollView {
         
         return label
     }()
+    
+    lazy var dataEntryView: DataEntryUIView = {
+        let view = DataEntryUIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 100.00))
+        view.backgroundColor = UIColor.blue
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    
+    }()
 
     func setupView() {
         backgroundColor = UIColor.green
+        addSubview(dataEntryView)
+        dataEntryView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor).isActive = true
+        dataEntryView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor).isActive = true
+        dataEntryView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
+        dataEntryView.heightAnchor.constraint(equalToConstant: 100.00).isActive = true
+        
         addSubview(startButton)
         startButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 32.0).isActive = true
         startButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -32.0).isActive = true
         startButton.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
         startButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16.0).isActive = true
-        startButton.isHidden = true
+//        startButton.isHidden = true
         
         addSubview(timeLabel)
         timeLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         timeLabel.bottomAnchor.constraint(equalTo: startButton.safeAreaLayoutGuide.topAnchor, constant: -16.0).isActive = true
-        timeLabel.isHidden = true
+//        timeLabel.isHidden = true
+        
+        
     }
     
     @objc func startButtonPressed() {

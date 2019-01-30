@@ -28,13 +28,17 @@ class DataEntryUIView: UIView {
         textField.font = UIFont(name: "Avenir", size: 17)
         textField.keyboardType = UIKeyboardType.default
         textField.returnKeyType = UIReturnKeyType.next
-        print("intervalTextField initialized")
+        textField.translatesAutoresizingMaskIntoConstraints = false
         
         return textField
     }()
     
     func setupView() {
         addSubview(intervalTitleTextField)
+        intervalTitleTextField.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor).isActive = true
+        intervalTitleTextField.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor).isActive = true
+        intervalTitleTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
+        
     }
 
 }
