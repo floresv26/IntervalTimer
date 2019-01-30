@@ -41,9 +41,13 @@ class QuickLogViewControllerTests: XCTestCase {
         XCTAssertNotNil(sut.activityNameLabel)
     }
     
-    func test_DataEntryCollectionView_AfterShowDataEntryStackView_IsNotNil() {
-        XCTAssertNotNil(sut.dataEntryCollectionView)
+    func test_ScrollView_AfterActivityInitialized_IsNotNil() {
+        sut.addActivityButton.sendActions(for: .touchUpInside)
+        
+        XCTAssertNotNil(sut.scrollView)
     }
+    
+    
     
 //    func test_ActivityName_WriteDataToRealm_IsNotNil() {
 //        sut.setActivityName(name: "Cobra Bag")

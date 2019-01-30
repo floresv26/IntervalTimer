@@ -18,10 +18,8 @@ class QuickLogViewController: UIViewController {
     @IBOutlet weak var createActivityStackView: UIStackView!
     @IBOutlet weak var addActivityTextField: UITextField!
     @IBOutlet weak var addActivityButton: UIButton!
-    @IBOutlet weak var dataEntryStackView: UIStackView!
-    @IBOutlet weak var dataEntryCollectionView: UICollectionView!
-    @IBOutlet weak var addIntervalButton: UIButton!
-    @IBOutlet weak var timeLabel: UILabel!
+    
+    var scrollView: QuickLogScrollView!
     
     
     override func viewDidLoad() {
@@ -72,7 +70,7 @@ class QuickLogViewController: UIViewController {
         setActivityNameLabelText(from: addActivityTextField)
         resetCreateActivityStackView()
         hideCreateActivityStackView()
-        showDataEntryCollectionView()
+        displayScrollView()
     }
     
     func setActivityNameLabelText(from textField: UITextField) {
@@ -91,8 +89,21 @@ class QuickLogViewController: UIViewController {
         addActivityButton.isEnabled = false
     }
     
-    func showDataEntryCollectionView() {
-        dataEntryStackView.isHidden = false
+    func initializeScrollView() {
+        scrollView = QuickLogScrollView()
+        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+//        scrollView.contentSize = CGSize(width: view.frame.size.width, height: view.frame.size.height)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func displayScrollView() {
+        initializeScrollView()
+        view.addSubview(scrollView)
+        scrollView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
+        scrollView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: createActivityStackView.safeAreaLayoutGuide.bottomAnchor, constant: 8.0).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+//        scrollView.startButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 16.0).isActive = true
     }
     
     func enableCancelButton() {
@@ -100,7 +111,7 @@ class QuickLogViewController: UIViewController {
     }
     
     @objc func cancelButtonPressed() {
-        dataEntryStackView.isHidden = true
+        scrollView.isHidden = true
         activityNameLabel.isHidden = true
         showCreateActivityStackView()
         print("Cancel button tapped")
@@ -149,20 +160,10 @@ extension QuickLogViewController: UITextFieldDelegate {
             setActivityNameLabelText(from: addActivityTextField)
             resetCreateActivityStackView()
             hideCreateActivityStackView()
-            showDataEntryCollectionView()
+            displayScrollView()
         }
         return true
     }
 
 }
-
-
-// MARK: - UICollectionViewDelegate
-extension QuickLogViewController: UICollectionViewDelegate {
-    
-}
-
-
-
-// MARK: - UICollectionViewDataSource
 
