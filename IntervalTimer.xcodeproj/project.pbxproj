@@ -22,6 +22,8 @@
 		A341F6712201F87700214B35 /* DataEntryUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A341F6702201F87700214B35 /* DataEntryUIView.swift */; };
 		A341F673220208A500214B35 /* QuickLogScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A341F672220208A500214B35 /* QuickLogScrollView.swift */; };
 		A341F675220221D900214B35 /* QuickLogScrollViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A341F674220221D900214B35 /* QuickLogScrollViewTests.swift */; };
+		A3DA483F2203B938007706C1 /* TimerControlUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DA483E2203B938007706C1 /* TimerControlUIView.swift */; };
+		A3DA48412203BA07007706C1 /* TimerControlViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DA48402203BA07007706C1 /* TimerControlViewTests.swift */; };
 		A3F9BA9E21F4127F0001CED5 /* DataEntryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F9BA9D21F4127F0001CED5 /* DataEntryTextField.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +60,8 @@
 		A341F6702201F87700214B35 /* DataEntryUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntryUIView.swift; sourceTree = "<group>"; };
 		A341F672220208A500214B35 /* QuickLogScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLogScrollView.swift; sourceTree = "<group>"; };
 		A341F674220221D900214B35 /* QuickLogScrollViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLogScrollViewTests.swift; sourceTree = "<group>"; };
+		A3DA483E2203B938007706C1 /* TimerControlUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerControlUIView.swift; sourceTree = "<group>"; };
+		A3DA48402203BA07007706C1 /* TimerControlViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerControlViewTests.swift; sourceTree = "<group>"; };
 		A3F9BA9D21F4127F0001CED5 /* DataEntryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntryTextField.swift; sourceTree = "<group>"; };
 		AB9004FCD0A9A2F12CDF8283 /* Pods-IntervalTimerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntervalTimerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IntervalTimerTests/Pods-IntervalTimerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +165,7 @@
 			children = (
 				A341F6702201F87700214B35 /* DataEntryUIView.swift */,
 				A341F672220208A500214B35 /* QuickLogScrollView.swift */,
+				A3DA483E2203B938007706C1 /* TimerControlUIView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -185,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				A341F674220221D900214B35 /* QuickLogScrollViewTests.swift */,
+				A3DA48402203BA07007706C1 /* TimerControlViewTests.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -369,6 +375,7 @@
 				A303137321EFE7C900AC1987 /* Activity.swift in Sources */,
 				A341F673220208A500214B35 /* QuickLogScrollView.swift in Sources */,
 				A3F9BA9E21F4127F0001CED5 /* DataEntryTextField.swift in Sources */,
+				A3DA483F2203B938007706C1 /* TimerControlUIView.swift in Sources */,
 				A303136C21EFDE9300AC1987 /* QuickLogViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A341F675220221D900214B35 /* QuickLogScrollViewTests.swift in Sources */,
+				A3DA48412203BA07007706C1 /* TimerControlViewTests.swift in Sources */,
 				A303136421EFD64A00AC1987 /* TimedIntervalTests.swift in Sources */,
 				A303137121EFE77300AC1987 /* ActivityTests.swift in Sources */,
 				A303136F21EFDF1D00AC1987 /* QuickLogViewControllerTests.swift in Sources */,

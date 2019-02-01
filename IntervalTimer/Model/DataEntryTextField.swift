@@ -10,11 +10,7 @@ import UIKit
 
 class DataEntryTextField: UITextField {
     
-
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        // Drawing code
         let border = CALayer()
         let width = CGFloat(1.0)
         border.borderColor = UIColor.darkGray.cgColor

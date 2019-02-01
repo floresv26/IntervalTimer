@@ -24,6 +24,8 @@ class QuickLogViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "Quick Log"
 
         setupRealm()
         addActivityTextField.delegate = self
@@ -109,10 +111,15 @@ class QuickLogViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonPressed))
     }
     
+    func disableCancelButton() {
+        navigationItem.rightBarButtonItem = nil
+    }
+    
     @objc func cancelButtonPressed() {
         scrollView.isHidden = true
         activityNameLabel.isHidden = true
         showCreateActivityStackView()
+        disableCancelButton()
         print("Cancel button tapped")
     }
 
