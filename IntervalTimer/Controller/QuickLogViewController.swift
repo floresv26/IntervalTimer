@@ -72,29 +72,31 @@ class QuickLogViewController: UIViewController {
         setActivityNameLabelText(from: addActivityTextField)
         resetCreateActivityStackView()
         hideCreateActivityStackView()
+        showActivityNameLabel()
         displayScrollView()
+        enableCancelButton()
     }
-    
+
     func setActivityNameLabelText(from textField: UITextField) {
         guard let validatedText = textField.text else {
             return
         }
-        
+
         activityNameLabel.text = validatedText.trimmingCharacters(in: .whitespacesAndNewlines)
     }
-    
+
     func resetCreateActivityStackView() {
         addActivityTextField.text = nil
 //        addActivityButton.isEnabled = false
     }
-    
+
     func initializeScrollView() {
         scrollView = QuickLogScrollView()
         scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
 //        scrollView.contentSize = CGSize(width: view.frame.size.width, height: view.frame.size.height)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
     }
-    
+
     func displayScrollView() {
         initializeScrollView()
         view.addSubview(scrollView)
@@ -103,21 +105,20 @@ class QuickLogViewController: UIViewController {
         scrollView.topAnchor.constraint(equalTo: createActivityStackView.safeAreaLayoutGuide.bottomAnchor, constant: 8.0).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
-    
+
     func enableCancelButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonPressed))
     }
-    
-    func disableCancelButton() {
-        navigationItem.rightBarButtonItem = nil
-    }
-    
+//
+//    func disableCancelButton() {
+//        navigationItem.rightBarButtonItem = nil
+//    }
+
     @objc func cancelButtonPressed() {
-        scrollView.isHidden = true
-        activityNameLabel.isHidden = true
-        showCreateActivityStackView()
-        disableCancelButton()
-        print("Cancel button tapped")
+//        scrollView.isHidden = true
+//        activityNameLabel.isHidden = true
+//        showCreateActivityStackView()
+//        disableCancelButton()
     }
 
     
@@ -130,29 +131,18 @@ class QuickLogViewController: UIViewController {
                                 self.createActivityStackView.alpha = 0
                                 self.createActivityStackView.isHidden = true
         }, completion: {finished in
-//            self.createActivityStackView.isHidden = true
-            print(self.createActivityStackView.isHidden)
+
         })
-        
-//        UIStackView.animate(withDuration: 0.1,
-//                            delay: 0.0,
-//                            options: .curveLinear,
-//                            animations: {
-//                                self.createActivityStackView.alpha = 0
+    }
+
+//    func showCreateActivityStackView() {
+//        UIStackView.animate(withDuration: 0.1, animations: {
+//            self.createActivityStackView.alpha = 1
 //        }) {
-//            _ in self.createActivityStackView.isHidden = true
-//            print(self.createActivityStackView.isHidden)
+//            _ in self.createActivityStackView.isHidden = false
 //        }
-    }
-    
-    func showCreateActivityStackView() {
-        UIStackView.animate(withDuration: 0.1, animations: {
-            self.createActivityStackView.alpha = 1
-        }) {
-            _ in self.createActivityStackView.isHidden = false
-        }
-    }
-    
+//    }
+//
     func showActivityNameLabel() {
         UILabel.animate(withDuration: 0.2,
                             delay: 0,
@@ -161,7 +151,7 @@ class QuickLogViewController: UIViewController {
                                 self.activityNameLabel.isHidden = false
                                 self.activityNameLabel.alpha = 1.0
         }, completion: {finished in
-            
+
         })
     }
 
@@ -200,12 +190,13 @@ extension QuickLogViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if textField == addActivityTextField {
-            setActivityNameLabelText(from: addActivityTextField)
-            textField.resignFirstResponder()
-            resetCreateActivityStackView()
-            hideCreateActivityStackView()
-            showActivityNameLabel()
-            displayScrollView()
+//            setActivityNameLabelText(from: addActivityTextField)
+//            textField.resignFirstResponder()
+//            resetCreateActivityStackView()
+//            hideCreateActivityStackView()
+//            showActivityNameLabel()
+//            displayScrollView()
+//            enableCancelButton()
         }
         return true
     }

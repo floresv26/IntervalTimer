@@ -41,30 +41,40 @@ class QuickLogViewControllerTests: XCTestCase {
         XCTAssertTrue(sut.activityNameLabel.isHidden)
     }
     
-    func test_ActivityNameLabel_AfterReturnKeyPressed_IsSet() {
-//        sut.addActivityTextField.text = "Activity Name"
-        sut.addActivityTextField.sendActions(for: .touchUpInside)
+    func test_ActivityNameLabel_AfterAddActivityButtonPressed_IsSet() {
+        sut.addActivityTextField.text = "Test Activity Name"
+        sut.addActivityButton.sendActions(for: .touchUpInside)
         
-        XCTAssertNil(sut.addActivityTextField.text)
-        XCTAssertEqual(sut.activityNameLabel.text, "Activity Name")
-        print(sut.activityNameLabel.text)
-//        sut.displayScrollView()
-//        XCTAssertNotNil(sut.scrollView)
-//        XCTAssertTrue(sut.scrollView.isDescendant(of: sut.view))
+        XCTAssertEqual(sut.activityNameLabel.text, "Test Activity Name")
     }
     
-    func test_CreateActivityStackView_AfterReturnKeyPressed_IsHidden() {
-        sut.addActivityTextField.sendActions(for: .touchUpInside)
-//        sut.hideCreateActivityStackView()
+    func test_CreateActivityStackView_AfterAddButtonPressed_IsHidden() {
+        sut.addActivityButton.sendActions(for: .touchUpInside)
+        
         XCTAssertTrue(sut.createActivityStackView.isHidden)
     }
     
-//    func test_ScrollView_AfterReturnKeyPressed_IsDisplayed() {
-//        sut.addActivityTextField.sendActions(for: .touchUpInside)
-//        XCTAssertTrue(sut.scrollView.isDescendant(of: sut.view))
-//    }
+    func test_ActivityNameLabel_AfterAddButtonPressed_IsNotHidden() {
+        sut.addActivityButton.sendActions(for: .touchUpInside)
+        
+        XCTAssertFalse(sut.activityNameLabel.isHidden)
+    }
     
+    func test_ScrollView_AfterAddButtonPressed_IsNotHidden() {
+        sut.addActivityButton.sendActions(for: .touchUpInside)
+        
+        XCTAssertFalse(sut.scrollView.isHidden)
+    }
     
+    func test_CancelButton_AfterAddButtonPressed_IsNotNil() {
+        sut.addActivityButton.sendActions(for: .touchUpInside)
+        
+        XCTAssertNotNil(sut.navigationItem.rightBarButtonItem)
+    }
+    
+    func test_ScrollView_AfterCancelButtonPressed_IsRemovedFromView() {
+        
+    }
     
 //    func test_ActivityName_WriteDataToRealm_IsNotNil() {
 //        sut.setActivityName(name: "Cobra Bag")
