@@ -66,7 +66,7 @@ class QuickLogViewController: UIViewController {
     //
     
     
-    // MARK: - Data Entry
+    // MARK: - Create Activity
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
         setActivityNameLabelText(from: addActivityTextField)
@@ -81,14 +81,11 @@ class QuickLogViewController: UIViewController {
         }
         
         activityNameLabel.text = validatedText.trimmingCharacters(in: .whitespacesAndNewlines)
-        activityNameLabel.isHidden = false
-        enableCancelButton()
     }
     
     func resetCreateActivityStackView() {
-        addActivityTextField.text = ""
-        addActivityTextField.resignFirstResponder()
-        addActivityButton.isEnabled = false
+        addActivityTextField.text = nil
+//        addActivityButton.isEnabled = false
     }
     
     func initializeScrollView() {
@@ -126,19 +123,46 @@ class QuickLogViewController: UIViewController {
     
     // MARK: Animations
     func hideCreateActivityStackView() {
-        UIStackView.animate(withDuration: 0, animations: {
-            self.createActivityStackView.alpha = 0
-        }) {
-            _ in self.createActivityStackView.isHidden = true
-        }
+        UIStackView.animate(withDuration: 0.1,
+                            delay: 0.0,
+                            options: .curveEaseOut,
+                            animations: {
+                                self.createActivityStackView.alpha = 0
+                                self.createActivityStackView.isHidden = true
+        }, completion: {finished in
+//            self.createActivityStackView.isHidden = true
+            print(self.createActivityStackView.isHidden)
+        })
+        
+//        UIStackView.animate(withDuration: 0.1,
+//                            delay: 0.0,
+//                            options: .curveLinear,
+//                            animations: {
+//                                self.createActivityStackView.alpha = 0
+//        }) {
+//            _ in self.createActivityStackView.isHidden = true
+//            print(self.createActivityStackView.isHidden)
+//        }
     }
     
     func showCreateActivityStackView() {
-        UIStackView.animate(withDuration: 0, animations: {
+        UIStackView.animate(withDuration: 0.1, animations: {
             self.createActivityStackView.alpha = 1
         }) {
             _ in self.createActivityStackView.isHidden = false
         }
+    }
+    
+    func showActivityNameLabel() {
+        UILabel.animate(withDuration: 0.2,
+                            delay: 0,
+                            options: .curveLinear,
+                            animations: {
+                                self.activityNameLabel.isHidden = false
+                                self.activityNameLabel.alpha = 1.0
+        }, completion: {finished in
+            
+        })
     }
 
 
@@ -148,10 +172,23 @@ class QuickLogViewController: UIViewController {
 // MARK: - UITextFieldDelegate
 
 extension QuickLogViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        if textField == addActivityTextField {
+////            addActivityButton.isEnabled = true
+//        }
+//    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
         if textField == addActivityTextField {
-            addActivityButton.isEnabled = true
+            if !text.isEmpty {
+                addActivityButton.isEnabled = true
+            } else {
+                addActivityButton.isEnabled = false
+            }
         }
+        
+        return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -164,8 +201,10 @@ extension QuickLogViewController: UITextFieldDelegate {
         
         if textField == addActivityTextField {
             setActivityNameLabelText(from: addActivityTextField)
+            textField.resignFirstResponder()
             resetCreateActivityStackView()
             hideCreateActivityStackView()
+            showActivityNameLabel()
             displayScrollView()
         }
         return true

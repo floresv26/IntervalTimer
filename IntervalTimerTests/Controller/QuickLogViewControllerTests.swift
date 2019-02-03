@@ -37,15 +37,32 @@ class QuickLogViewControllerTests: XCTestCase {
         XCTAssertNotNil(sut.addActivityButton)
     }
     
-    func test_ActivityNameLabel_AfterViewDidLoad_IsNotNil() {
-        XCTAssertNotNil(sut.activityNameLabel)
+    func test_ActivityNameLabel_AfterViewDidLoad_IsHidden() {
+        XCTAssertTrue(sut.activityNameLabel.isHidden)
     }
     
-    func test_ScrollView_AfterActivityInitialized_IsNotNil() {
-        sut.addActivityButton.sendActions(for: .touchUpInside)
+    func test_ActivityNameLabel_AfterReturnKeyPressed_IsSet() {
+//        sut.addActivityTextField.text = "Activity Name"
+        sut.addActivityTextField.sendActions(for: .touchUpInside)
         
-        XCTAssertNotNil(sut.scrollView)
+        XCTAssertNil(sut.addActivityTextField.text)
+        XCTAssertEqual(sut.activityNameLabel.text, "Activity Name")
+        print(sut.activityNameLabel.text)
+//        sut.displayScrollView()
+//        XCTAssertNotNil(sut.scrollView)
+//        XCTAssertTrue(sut.scrollView.isDescendant(of: sut.view))
     }
+    
+    func test_CreateActivityStackView_AfterReturnKeyPressed_IsHidden() {
+        sut.addActivityTextField.sendActions(for: .touchUpInside)
+//        sut.hideCreateActivityStackView()
+        XCTAssertTrue(sut.createActivityStackView.isHidden)
+    }
+    
+//    func test_ScrollView_AfterReturnKeyPressed_IsDisplayed() {
+//        sut.addActivityTextField.sendActions(for: .touchUpInside)
+//        XCTAssertTrue(sut.scrollView.isDescendant(of: sut.view))
+//    }
     
     
     
