@@ -73,7 +73,40 @@ class QuickLogViewControllerTests: XCTestCase {
     }
     
     func test_ScrollView_AfterCancelButtonPressed_IsRemovedFromView() {
+        sut.addActivityButton.sendActions(for: .touchUpInside)
+        guard let action = sut.navigationItem.rightBarButtonItem?.action else {
+            return XCTFail("The Cancel button doesn't have an action")
+        }
+        sut.navigationItem.rightBarButtonItem?.target?.perform(action)
+        XCTAssertNil(sut.scrollView)
         
+    }
+    
+    func test_ActivityNameLabel_AfterCancelButtonPressed_IsHidden() {
+        sut.addActivityButton.sendActions(for: .touchUpInside)
+        guard let action = sut.navigationItem.rightBarButtonItem?.action else {
+            return XCTFail("The Cancel button doesn't have an action")
+        }
+        sut.navigationItem.rightBarButtonItem?.target?.perform(action)
+        XCTAssertTrue(sut.activityNameLabel.isHidden)
+    }
+    
+    func test_CreateActivityStackView_AfterCancelButtonPressed_IsNotHidden() {
+        sut.addActivityButton.sendActions(for: .touchUpInside)
+        guard let action = sut.navigationItem.rightBarButtonItem?.action else {
+            return XCTFail("The Cancel button doesn't have an action")
+        }
+        sut.navigationItem.rightBarButtonItem?.target?.perform(action)
+        XCTAssertTrue(sut.createActivityStackView.isHidden)
+    }
+    
+    func test_CancelButton_AfterCancelButtonPressed_IsRemoved() {
+        sut.addActivityButton.sendActions(for: .touchUpInside)
+        guard let action = sut.navigationItem.rightBarButtonItem?.action else {
+            return XCTFail("The Cancel button doesn't have an action")
+        }
+        sut.navigationItem.rightBarButtonItem?.target?.perform(action)
+        XCTAssertNil(sut.navigationItem.rightBarButtonItem)
     }
     
 //    func test_ActivityName_WriteDataToRealm_IsNotNil() {

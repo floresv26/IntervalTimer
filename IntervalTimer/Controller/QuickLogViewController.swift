@@ -109,16 +109,21 @@ class QuickLogViewController: UIViewController {
     func enableCancelButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonPressed))
     }
-//
-//    func disableCancelButton() {
-//        navigationItem.rightBarButtonItem = nil
-//    }
+
+    func removeCancelButton() {
+        navigationItem.rightBarButtonItem = nil
+    }
+    
+    func removeScrollViewFromSuperView() {
+        scrollView.removeFromSuperview()
+        scrollView = nil
+    }
 
     @objc func cancelButtonPressed() {
-//        scrollView.isHidden = true
-//        activityNameLabel.isHidden = true
-//        showCreateActivityStackView()
-//        disableCancelButton()
+        removeScrollViewFromSuperView()
+        hideActivityNameLabel()
+        showCreateActivityStackView()
+        removeCancelButton()
     }
 
     
@@ -135,16 +140,16 @@ class QuickLogViewController: UIViewController {
         })
     }
 
-//    func showCreateActivityStackView() {
-//        UIStackView.animate(withDuration: 0.1, animations: {
-//            self.createActivityStackView.alpha = 1
-//        }) {
-//            _ in self.createActivityStackView.isHidden = false
-//        }
-//    }
-//
+    func showCreateActivityStackView() {
+        UIStackView.animate(withDuration: 0.1, animations: {
+            self.createActivityStackView.alpha = 1
+        }) {
+            _ in self.createActivityStackView.isHidden = false
+        }
+    }
+
     func showActivityNameLabel() {
-        UILabel.animate(withDuration: 0.2,
+        UILabel.animate(withDuration: 0.1,
                             delay: 0,
                             options: .curveLinear,
                             animations: {
@@ -152,6 +157,18 @@ class QuickLogViewController: UIViewController {
                                 self.activityNameLabel.alpha = 1.0
         }, completion: {finished in
 
+        })
+    }
+    
+    func hideActivityNameLabel() {
+        UILabel.animate(withDuration: 0.1,
+                            delay: 0.0,
+                            options: .curveEaseOut,
+                            animations: {
+                                self.activityNameLabel.alpha = 0
+                                self.activityNameLabel.isHidden = true
+        }, completion: {finished in
+            
         })
     }
 
@@ -190,13 +207,13 @@ extension QuickLogViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if textField == addActivityTextField {
-//            setActivityNameLabelText(from: addActivityTextField)
-//            textField.resignFirstResponder()
-//            resetCreateActivityStackView()
-//            hideCreateActivityStackView()
-//            showActivityNameLabel()
-//            displayScrollView()
-//            enableCancelButton()
+            setActivityNameLabelText(from: addActivityTextField)
+            textField.resignFirstResponder()
+            resetCreateActivityStackView()
+            hideCreateActivityStackView()
+            showActivityNameLabel()
+            displayScrollView()
+            enableCancelButton()
         }
         return true
     }
