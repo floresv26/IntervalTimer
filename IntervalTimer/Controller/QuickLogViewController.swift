@@ -106,13 +106,14 @@ class QuickLogViewController: UIViewController {
         scrollView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
         scrollView.topAnchor.constraint(equalTo: createActivityStackView.safeAreaLayoutGuide.bottomAnchor, constant: 8.0).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: timerControlView.topAnchor).isActive = true
+        scrollView.heightAnchor.constraint(equalToConstant: scrollView.intrinsicContentSize.height).isActive = true
+//        scrollView.bottomAnchor.constraint(equalTo: timerControlView.topAnchor).isActive = true
     }
     
     func initializeScrollView() {
         scrollView = QuickLogScrollView()
-        scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-        scrollView.contentSize = CGSize(width: scrollView.intrinsicContentSize.width, height: scrollView.intrinsicContentSize.height)
+        scrollView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: scrollView.intrinsicContentSize.height)
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.size.width, height: scrollView.intrinsicContentSize.height)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
     }
     

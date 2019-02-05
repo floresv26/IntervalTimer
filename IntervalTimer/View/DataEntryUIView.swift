@@ -23,59 +23,62 @@ class DataEntryUIView: UIView {
     lazy var intervalTitleTextField: DataEntryTextField = {
         let textField = DataEntryTextField()
         textField.backgroundColor = UIColor.white
-        textField.frame = CGRect(x: 0, y: 0, width: 200, height: 30)
+        textField.frame = CGRect(x: 0, y: 0, width: 250, height: 40)
         textField.placeholder = "Interval Title"
         textField.font = UIFont(name: "Avenir", size: 17)
         textField.keyboardType = UIKeyboardType.default
         textField.returnKeyType = UIReturnKeyType.next
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.restorationIdentifier = "intervalTitleTextField"
         
         return textField
     }()
     
     lazy var timeTextFieldsView: TimeTextFieldsView = {
         let view = TimeTextFieldsView()
-        view.frame = CGRect(x: 0, y: 0, width: 0, height: 30)
+        view.frame = CGRect(x: 0, y: 0, width: intrinsicContentSize.width, height: 30)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.restorationIdentifier = "timeTextFieldsView"
         
         return view
     }()
     
     lazy var completedButton: UIButton = {
         let button = UIButton(type: UIButton.ButtonType.custom)
-        button.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        button.frame = CGRect(x: 0, y: 0, width: 24.0, height: 24.0)
         button.setImage(UIImage(named: "incomplete_checkmark.png"), for: .normal)
         button.addTarget(self, action: #selector(completedButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.restorationIdentifier = "completedButton"
         
         return button
     }()
     
+    // Mark: Setup View
+    
     func setupView() {
         addSubview(intervalTitleTextField)
-        intervalTitleTextField.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16.0).isActive = true
-        intervalTitleTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16.0).isActive = true
+        intervalTitleTextField.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 16.0).isActive = true
+        intervalTitleTextField.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16.0).isActive = true
         intervalTitleTextField.widthAnchor.constraint(equalToConstant: 250.0).isActive = true
         intervalTitleTextField.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
         
         addSubview(timeTextFieldsView)
-        timeTextFieldsView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16.0).isActive = true
+        timeTextFieldsView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 16.0).isActive = true
         timeTextFieldsView.topAnchor.constraint(equalTo: intervalTitleTextField.bottomAnchor, constant: 16.0).isActive = true
-        timeTextFieldsView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16.0).isActive = true
+        timeTextFieldsView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -16.0).isActive = true
         timeTextFieldsView.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
         
         addSubview(completedButton)
-        completedButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor).isActive = true
-        completedButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16.0).isActive = true
+        completedButton.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor).isActive = true
+        completedButton.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: -16.0).isActive = true
+        completedButton.widthAnchor.constraint(equalToConstant: 24.0).isActive = true
+        completedButton.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
     }
         
     @objc func completedButtonPressed() {
-        
+        print("Completed button pressed")
     }
 }
+
+// Mark: TimeTextFieldsView Class
 
 class TimeTextFieldsView: UIView {
     
@@ -93,7 +96,6 @@ class TimeTextFieldsView: UIView {
         let textField = TimeTextField()
         textField.placeholder = "HH"
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.restorationIdentifier = "hourTextField"
         
         return textField
     }()
@@ -102,7 +104,6 @@ class TimeTextFieldsView: UIView {
         let textField = TimeTextField()
         textField.placeholder = "MM"
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.restorationIdentifier = "minuteTextField"
         
         return textField
     }()
@@ -111,7 +112,6 @@ class TimeTextFieldsView: UIView {
         let textField = TimeTextField()
         textField.placeholder = "SS"
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.restorationIdentifier = "secondsTextField"
         
         return textField
     }()
@@ -121,7 +121,6 @@ class TimeTextFieldsView: UIView {
         label.text = ":"
         label.font = UIFont(name: "Avenir", size: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.restorationIdentifier = "firstColonLabel"
         
         return label
     }()
@@ -131,10 +130,11 @@ class TimeTextFieldsView: UIView {
         label.text = ":"
         label.font = UIFont(name: "Avenir", size: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.restorationIdentifier = "secondColonLabel"
         
         return label
     }()
+    
+    // Setup
     
     func setupView() {
         addSubview(hourTextField)
@@ -168,6 +168,8 @@ class TimeTextFieldsView: UIView {
         secondsTextField.widthAnchor.constraint(equalToConstant: 50.0).isActive = true
     }
 }
+
+// Mark: TimeTextField Class
 
 class TimeTextField: DataEntryTextField {
     override init(frame: CGRect) {

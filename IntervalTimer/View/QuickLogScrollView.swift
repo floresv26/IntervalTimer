@@ -26,7 +26,7 @@ class QuickLogScrollView: UIScrollView {
         let view = UIStackView()
         view.frame = CGRect(x: 0,
                             y: 0,
-                            width: intrinsicContentSize.width,
+                            width: self.frame.size.width,
                             height: intrinsicContentSize.height)
         view.axis = .vertical
         view.distribution = .fillProportionally
@@ -39,6 +39,7 @@ class QuickLogScrollView: UIScrollView {
 
     lazy var addIntervalButton: UIButton = {
         let button = UIButton(type: UIButton.ButtonType.custom)
+        button.backgroundColor = UIColor.lightGray
         button.frame = CGRect(x: 0, y: 0, width: 100, height: 30.0)
         button.setImage(UIImage(named: "circle_add.png"), for: .normal)
         button.setTitle("Add Interval", for: .normal)
@@ -48,6 +49,26 @@ class QuickLogScrollView: UIScrollView {
 
         return button
     }()
+    
+    // Mark: View Setup
+    
+    func setupView() {
+        backgroundColor = UIColor.green
+        addSubview(stackView)
+        stackView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor).isActive = true
+        stackView.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
+        
+        addNewDataEntryViewToDataEntryViewsArray()
+        
+        addSubview(addIntervalButton)
+        addIntervalButton.topAnchor.constraint(equalTo: stackView.safeAreaLayoutGuide.bottomAnchor, constant: 16.0).isActive = true
+        addIntervalButton.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 16.0).isActive = true
+        addIntervalButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -16.0).isActive = true
+        addIntervalButton.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
+    }
+    
+    // Mark: Adding an interval
 
     @objc func addIntervalButtonPressed() {
         addNewDataEntryViewToDataEntryViewsArray()
@@ -56,12 +77,11 @@ class QuickLogScrollView: UIScrollView {
     func addNewDataEntryViewToDataEntryViewsArray() {
         let dataEntryView: DataEntryUIView = {
             let view = DataEntryUIView()
-//            view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 118.0)
+            view.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: 118.0)
             view.backgroundColor = UIColor.blue
             view.translatesAutoresizingMaskIntoConstraints = false
             
             return view
-            
         }()
         
         dataEntryViews.append(dataEntryView)
@@ -72,26 +92,32 @@ class QuickLogScrollView: UIScrollView {
     }
     
     func updateStackViewWithNewDataEntryView(with dataEntryView: DataEntryUIView) {
-        stackView.addArrangedSubview(dataEntryView)
-        
+//        stackView.addArrangedSubview(dataEntryView)
+//
         let index = 0
         dataEntryViews.forEach { view in
             switch index {
             case dataEntryViews.startIndex:
+                stackView.addArrangedSubview(dataEntryView)
                 dataEntryView.topAnchor.constraint(equalTo: stackView.safeAreaLayoutGuide.topAnchor).isActive = true
                 dataEntryView.bottomAnchor.constraint(equalTo: stackView.safeAreaLayoutGuide.bottomAnchor).isActive = true
                 dataEntryView.leftAnchor.constraint(equalTo: stackView.safeAreaLayoutGuide.leftAnchor).isActive = true
                 dataEntryView.rightAnchor.constraint(equalTo: stackView.safeAreaLayoutGuide.rightAnchor).isActive = true
+                dataEntryView.heightAnchor.constraint(equalToConstant: 118.0).isActive = true
             case 1..<dataEntryViews.endIndex:
-                dataEntryView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-                dataEntryView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+                stackView.addArrangedSubview(dataEntryView)
+//                dataEntryView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
+//                dataEntryView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
                 dataEntryView.leftAnchor.constraint(equalTo: stackView.safeAreaLayoutGuide.leftAnchor).isActive = true
                 dataEntryView.rightAnchor.constraint(equalTo: stackView.safeAreaLayoutGuide.rightAnchor).isActive = true
+                dataEntryView.heightAnchor.constraint(equalToConstant: 118.0).isActive = true
             case dataEntryViews.endIndex:
-                dataEntryView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
+                stackView.addArrangedSubview(dataEntryView)
+//                dataEntryView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
                 dataEntryView.bottomAnchor.constraint(equalTo: stackView.safeAreaLayoutGuide.bottomAnchor).isActive = true
                 dataEntryView.leftAnchor.constraint(equalTo: stackView.safeAreaLayoutGuide.leftAnchor).isActive = true
                 dataEntryView.rightAnchor.constraint(equalTo: stackView.safeAreaLayoutGuide.rightAnchor).isActive = true
+                dataEntryView.heightAnchor.constraint(equalToConstant: 118.0).isActive = true
             default:
                 break
             }
@@ -109,7 +135,6 @@ class QuickLogScrollView: UIScrollView {
         print("ScrollView frame: \(self.frame.size)")
         print("ScrollView size: \(contentSize)")
         print("StackView frame: \(stackView.frame.size)")
-        listSubviewsOfView(view: self)
     }
     
 //    func calculateScrollViewContentSize(view dataEntryView: DataEntryUIView, dataEntryViews count: Int) -> CGFloat {
@@ -122,23 +147,7 @@ class QuickLogScrollView: UIScrollView {
 //        return contentHeight
 //    }
 
-    func setupView() {
-        backgroundColor = UIColor.green
-        addSubview(stackView)
-        stackView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor).isActive = true
-        stackView.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor).isActive = true
-        stackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
-//        stackView.heightAnchor.constraint(equalToConstant: 118.0).isActive = true
-
-        addSubview(addIntervalButton)
-        addIntervalButton.topAnchor.constraint(equalTo: stackView.safeAreaLayoutGuide.bottomAnchor, constant: 16.0).isActive = true
-        addIntervalButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16.0).isActive = true
-        addIntervalButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 16.0).isActive = true
-        
-        addNewDataEntryViewToDataEntryViewsArray()
-        
-        listSubviewsOfView(view: self)
-    }
+    
     
     func calculateStackViewHeight(view stackView: UIStackView) -> CGFloat {
         var calculatedHeight: CGFloat = 0
@@ -157,26 +166,6 @@ class QuickLogScrollView: UIScrollView {
 //        return calculatedWidth
 //    }
     
-    func listSubviewsOfView(view:UIView){
-        
-        // Get the subviews of the view
-        let subviews = self.subviews
-        
-        // Return if there are no subviews
-        if subviews.count == 0 {
-            print("ScrollView has no subviews")
-        }
-        
-        for subview : AnyObject in subviews{
-            
-            // Do what you want to do with the subview
-            print(subview)
-            print(subview.restorationIdentifier)
-            
-            // List the subviews of subview
-//            listSubviewsOfView(view: subview as! UIView)
-        }
-    }
     
 
 }
