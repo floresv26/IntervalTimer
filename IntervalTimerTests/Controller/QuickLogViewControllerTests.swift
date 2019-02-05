@@ -49,30 +49,35 @@ class QuickLogViewControllerTests: XCTestCase {
     }
     
     func test_CreateActivityStackView_AfterAddButtonPressed_IsHidden() {
+        sut.addActivityTextField.text = "Test Activity Name"
         sut.addActivityButton.sendActions(for: .touchUpInside)
         
         XCTAssertTrue(sut.createActivityStackView.isHidden)
     }
     
     func test_ActivityNameLabel_AfterAddButtonPressed_IsNotHidden() {
+        sut.addActivityTextField.text = "Test Activity Name"
         sut.addActivityButton.sendActions(for: .touchUpInside)
         
         XCTAssertFalse(sut.activityNameLabel.isHidden)
     }
     
     func test_ScrollView_AfterAddButtonPressed_IsNotHidden() {
+        sut.addActivityTextField.text = "Test Activity Name"
         sut.addActivityButton.sendActions(for: .touchUpInside)
         
         XCTAssertFalse(sut.scrollView.isHidden)
     }
     
     func test_CancelButton_AfterAddButtonPressed_IsNotNil() {
+        sut.addActivityTextField.text = "Test Activity Name"
         sut.addActivityButton.sendActions(for: .touchUpInside)
         
         XCTAssertNotNil(sut.navigationItem.rightBarButtonItem)
     }
     
     func test_ScrollView_AfterCancelButtonPressed_IsRemovedFromView() {
+        sut.addActivityTextField.text = "Test Activity Name"
         sut.addActivityButton.sendActions(for: .touchUpInside)
         guard let action = sut.navigationItem.rightBarButtonItem?.action else {
             return XCTFail("The Cancel button doesn't have an action")
@@ -83,6 +88,7 @@ class QuickLogViewControllerTests: XCTestCase {
     }
     
     func test_ActivityNameLabel_AfterCancelButtonPressed_IsHidden() {
+        sut.addActivityTextField.text = "Test Activity Name"
         sut.addActivityButton.sendActions(for: .touchUpInside)
         guard let action = sut.navigationItem.rightBarButtonItem?.action else {
             return XCTFail("The Cancel button doesn't have an action")
@@ -92,6 +98,7 @@ class QuickLogViewControllerTests: XCTestCase {
     }
     
     func test_CreateActivityStackView_AfterCancelButtonPressed_IsNotHidden() {
+        sut.addActivityTextField.text = "Test Activity Name"
         sut.addActivityButton.sendActions(for: .touchUpInside)
         guard let action = sut.navigationItem.rightBarButtonItem?.action else {
             return XCTFail("The Cancel button doesn't have an action")
@@ -101,12 +108,27 @@ class QuickLogViewControllerTests: XCTestCase {
     }
     
     func test_CancelButton_AfterCancelButtonPressed_IsRemoved() {
+        sut.addActivityTextField.text = "Test Activity Name"
         sut.addActivityButton.sendActions(for: .touchUpInside)
         guard let action = sut.navigationItem.rightBarButtonItem?.action else {
             return XCTFail("The Cancel button doesn't have an action")
         }
         sut.navigationItem.rightBarButtonItem?.target?.perform(action)
         XCTAssertNil(sut.navigationItem.rightBarButtonItem)
+    }
+    
+    func test_TimerControlView_AfterAddActivityButtonPressed_IsNotNil() {
+        sut.addActivityTextField.text = "Test Activity Name"
+        sut.addActivityButton.sendActions(for: .touchUpInside)
+        
+        XCTAssertNotNil(sut.timerControlView)
+    }
+    
+    func test_TimerControlView_AfterAddActivityButtonPressed_IsDescendantOfView() {
+        sut.addActivityTextField.text = "Test Activity Name"
+        sut.addActivityButton.sendActions(for: .touchUpInside)
+        
+        XCTAssertTrue(sut.timerControlView.isDescendant(of: sut.view))
     }
     
 //    func test_ActivityName_WriteDataToRealm_IsNotNil() {

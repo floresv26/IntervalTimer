@@ -29,6 +29,7 @@ class DataEntryUIView: UIView {
         textField.keyboardType = UIKeyboardType.default
         textField.returnKeyType = UIReturnKeyType.next
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.restorationIdentifier = "intervalTitleTextField"
         
         return textField
     }()
@@ -37,6 +38,7 @@ class DataEntryUIView: UIView {
         let view = TimeTextFieldsView()
         view.frame = CGRect(x: 0, y: 0, width: 0, height: 30)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.restorationIdentifier = "timeTextFieldsView"
         
         return view
     }()
@@ -47,6 +49,7 @@ class DataEntryUIView: UIView {
         button.setImage(UIImage(named: "incomplete_checkmark.png"), for: .normal)
         button.addTarget(self, action: #selector(completedButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.restorationIdentifier = "completedButton"
         
         return button
     }()
@@ -90,6 +93,7 @@ class TimeTextFieldsView: UIView {
         let textField = TimeTextField()
         textField.placeholder = "HH"
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.restorationIdentifier = "hourTextField"
         
         return textField
     }()
@@ -98,6 +102,7 @@ class TimeTextFieldsView: UIView {
         let textField = TimeTextField()
         textField.placeholder = "MM"
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.restorationIdentifier = "minuteTextField"
         
         return textField
     }()
@@ -106,6 +111,7 @@ class TimeTextFieldsView: UIView {
         let textField = TimeTextField()
         textField.placeholder = "SS"
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.restorationIdentifier = "secondsTextField"
         
         return textField
     }()
@@ -115,6 +121,7 @@ class TimeTextFieldsView: UIView {
         label.text = ":"
         label.font = UIFont(name: "Avenir", size: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.restorationIdentifier = "firstColonLabel"
         
         return label
     }()
@@ -124,6 +131,7 @@ class TimeTextFieldsView: UIView {
         label.text = ":"
         label.font = UIFont(name: "Avenir", size: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.restorationIdentifier = "secondColonLabel"
         
         return label
     }()
@@ -174,11 +182,11 @@ class TimeTextField: DataEntryTextField {
     
     private func textFieldSetup() {
         self.backgroundColor = UIColor.white
-        frame = CGRect(x: 0, y: 0, width: 50, height: 40)
-        font = UIFont(name: "Avenir", size: 20)
-        keyboardType = UIKeyboardType.numberPad
-        returnKeyType = UIReturnKeyType.next
-        contentVerticalAlignment = .center
-        textAlignment = .center
+        self.frame = CGRect(x: 0, y: 0, width: 50, height: 40)
+        self.font = UIFont(name: "Avenir", size: 20)
+        self.keyboardType = UIKeyboardType.numberPad
+        self.returnKeyType = UIReturnKeyType.next
+        self.contentVerticalAlignment = .center
+        self.textAlignment = .center
     }
 }

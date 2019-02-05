@@ -20,6 +20,7 @@ class QuickLogViewController: UIViewController {
     @IBOutlet weak var addActivityButton: UIButton!
     
     var scrollView: QuickLogScrollView!
+    var timerControlView: TimerControlUIView!
     
     
     override func viewDidLoad() {
@@ -69,42 +70,59 @@ class QuickLogViewController: UIViewController {
     // MARK: - Create Activity
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
-        setActivityNameLabelText(from: addActivityTextField)
+        validateTextInput(from: addActivityTextField)
+    }
+    
+    func validateTextInput(from textField: UITextField) {
+        guard let validatedText = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !validatedText.isEmpty else {
+            resetCreateActivityStackView()
+            return
+        }
+        
+        activityNameLabel.text = validatedText
         resetCreateActivityStackView()
         hideCreateActivityStackView()
         showActivityNameLabel()
+        displayTimerControlView()
         displayScrollView()
         enableCancelButton()
     }
-
-    func setActivityNameLabelText(from textField: UITextField) {
-        guard let validatedText = textField.text else {
-            return
-        }
-
-        activityNameLabel.text = validatedText.trimmingCharacters(in: .whitespacesAndNewlines)
-    }
-
+    
+    // CreateActivityStackView
+    
     func resetCreateActivityStackView() {
         addActivityTextField.text = nil
-//        addActivityButton.isEnabled = false
+        addActivityButton.isEnabled = false
     }
-
-    func initializeScrollView() {
-        scrollView = QuickLogScrollView()
-        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-//        scrollView.contentSize = CGSize(width: view.frame.size.width, height: view.frame.size.height)
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-    }
-
+    
+    
+    
+    // ScrollView
+    
     func displayScrollView() {
         initializeScrollView()
+        
         view.addSubview(scrollView)
         scrollView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
         scrollView.topAnchor.constraint(equalTo: createActivityStackView.safeAreaLayoutGuide.bottomAnchor, constant: 8.0).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: timerControlView.topAnchor).isActive = true
     }
+    
+    func initializeScrollView() {
+        scrollView = QuickLogScrollView()
+        scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        scrollView.contentSize = CGSize(width: scrollView.intrinsicContentSize.width, height: scrollView.intrinsicContentSize.height)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func removeScrollViewFromSuperView() {
+        scrollView.removeFromSuperview()
+        scrollView = nil
+    }
+    
+    
+    // CancelButton
 
     func enableCancelButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonPressed))
@@ -114,16 +132,34 @@ class QuickLogViewController: UIViewController {
         navigationItem.rightBarButtonItem = nil
     }
     
-    func removeScrollViewFromSuperView() {
-        scrollView.removeFromSuperview()
-        scrollView = nil
-    }
-
     @objc func cancelButtonPressed() {
         removeScrollViewFromSuperView()
         hideActivityNameLabel()
+        resetCreateActivityStackView()
         showCreateActivityStackView()
         removeCancelButton()
+    }
+    
+    
+    // TimerControlView
+    
+    func displayTimerControlView() {
+        initializeTimerControlView()
+        view.addSubview(timerControlView)
+        timerControlView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 16.0).isActive = true
+        timerControlView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor).isActive = true
+        timerControlView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        
+        
+        print("TimerControlView frame: \(timerControlView.frame)")
+        print("TimerLabel frame: \(timerControlView.timeLabel.frame)")
+        print("StartButton frame: \(timerControlView.startButton.frame)")
+    }
+    
+    func initializeTimerControlView() {
+        timerControlView = TimerControlUIView()
+        timerControlView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 124.0)
+        timerControlView.translatesAutoresizingMaskIntoConstraints = false
     }
 
     
@@ -167,6 +203,7 @@ class QuickLogViewController: UIViewController {
                             animations: {
                                 self.activityNameLabel.alpha = 0
                                 self.activityNameLabel.isHidden = true
+                                self.activityNameLabel.text = nil
         }, completion: {finished in
             
         })
@@ -179,12 +216,6 @@ class QuickLogViewController: UIViewController {
 // MARK: - UITextFieldDelegate
 
 extension QuickLogViewController: UITextFieldDelegate {
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        if textField == addActivityTextField {
-////            addActivityButton.isEnabled = true
-//        }
-//    }
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
         if textField == addActivityTextField {
@@ -207,13 +238,8 @@ extension QuickLogViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if textField == addActivityTextField {
-            setActivityNameLabelText(from: addActivityTextField)
             textField.resignFirstResponder()
-            resetCreateActivityStackView()
-            hideCreateActivityStackView()
-            showActivityNameLabel()
-            displayScrollView()
-            enableCancelButton()
+            validateTextInput(from: addActivityTextField)
         }
         return true
     }
