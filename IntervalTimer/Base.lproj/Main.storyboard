@@ -33,65 +33,10 @@
                     <view key="view" contentMode="scaleToFill" id="koR-0K-44x">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6o-fp-3Sf">
-                                <rect key="frame" x="16" y="104" width="382" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="XHl-zZ-c5a"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" restorationIdentifier="CreateActivityStackView" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Gkt-0p-t39" userLabel="CreateActivityStackView">
-                                <rect key="frame" x="16" y="104" width="382" height="24"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Create an activity..." textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OOl-YV-SIx" customClass="DataEntryTextField" customModule="IntervalTimer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="308" height="24"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" spellCheckingType="yes"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="AddActivityButton" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ms0-fI-DyP">
-                                        <rect key="frame" x="358" y="0.0" width="24" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="g4G-EU-4Oy"/>
-                                        </constraints>
-                                        <state key="normal" image="add_dark"/>
-                                        <connections>
-                                            <action selector="addButtonPressed:" destination="TcX-wE-WBt" eventType="touchUpInside" id="QEj-9r-Cbd"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Ms0-fI-DyP" secondAttribute="trailing" id="9mv-Xv-bdi"/>
-                                    <constraint firstItem="OOl-YV-SIx" firstAttribute="leading" secondItem="Gkt-0p-t39" secondAttribute="leading" id="OHe-NG-p4v"/>
-                                    <constraint firstItem="Ms0-fI-DyP" firstAttribute="leading" secondItem="OOl-YV-SIx" secondAttribute="trailing" constant="50" id="PSe-aa-Zc9"/>
-                                    <constraint firstItem="Ms0-fI-DyP" firstAttribute="leading" secondItem="OOl-YV-SIx" secondAttribute="trailing" constant="50" id="Unp-bZ-KIH"/>
-                                    <constraint firstItem="Ms0-fI-DyP" firstAttribute="centerY" secondItem="Gkt-0p-t39" secondAttribute="centerY" id="XKg-SB-IPc"/>
-                                    <constraint firstItem="OOl-YV-SIx" firstAttribute="top" secondItem="Gkt-0p-t39" secondAttribute="top" id="kjp-B7-FJP"/>
-                                    <constraint firstAttribute="bottom" secondItem="OOl-YV-SIx" secondAttribute="bottom" id="p3E-vA-KgA"/>
-                                </constraints>
-                            </stackView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="pAy-g6-GyA" firstAttribute="trailing" secondItem="e6o-fp-3Sf" secondAttribute="trailing" constant="16" id="5Je-oh-wed"/>
-                            <constraint firstItem="Gkt-0p-t39" firstAttribute="top" secondItem="pAy-g6-GyA" secondAttribute="top" constant="16" id="HiA-nt-4Bk"/>
-                            <constraint firstItem="e6o-fp-3Sf" firstAttribute="leading" secondItem="pAy-g6-GyA" secondAttribute="leading" constant="16" id="IKv-OU-49C"/>
-                            <constraint firstItem="e6o-fp-3Sf" firstAttribute="top" secondItem="pAy-g6-GyA" secondAttribute="top" constant="16" id="iKP-Oj-dtB"/>
-                            <constraint firstItem="Gkt-0p-t39" firstAttribute="leading" secondItem="pAy-g6-GyA" secondAttribute="leading" constant="16" id="inl-n7-rLe"/>
-                            <constraint firstItem="pAy-g6-GyA" firstAttribute="trailing" secondItem="Gkt-0p-t39" secondAttribute="trailing" constant="16" id="jNB-jg-5SO"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="pAy-g6-GyA"/>
                     </view>
                     <navigationItem key="navigationItem" id="GIt-Om-cIx"/>
-                    <connections>
-                        <outlet property="activityNameLabel" destination="e6o-fp-3Sf" id="zA3-xO-tZV"/>
-                        <outlet property="addActivityButton" destination="Ms0-fI-DyP" id="O6L-97-dEs"/>
-                        <outlet property="addActivityTextField" destination="OOl-YV-SIx" id="0RM-B9-9KI"/>
-                        <outlet property="createActivityStackView" destination="Gkt-0p-t39" id="O17-Ii-3Qe"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P0b-RV-5Tt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -135,7 +80,4 @@
             <point key="canvasLocation" x="355.07246376811599" y="-564.50892857142856"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="add_dark" width="24" height="24"/>
-    </resources>
 </document>

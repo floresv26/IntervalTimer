@@ -22,6 +22,9 @@
 		A341F6712201F87700214B35 /* DataEntryUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A341F6702201F87700214B35 /* DataEntryUIView.swift */; };
 		A341F673220208A500214B35 /* QuickLogScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A341F672220208A500214B35 /* QuickLogScrollView.swift */; };
 		A341F675220221D900214B35 /* QuickLogScrollViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A341F674220221D900214B35 /* QuickLogScrollViewTests.swift */; };
+		A3729C64220B980900B76940 /* DataEntryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3729C63220B980900B76940 /* DataEntryTableView.swift */; };
+		A3729C66220B9F3300B76940 /* CreateActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3729C65220B9F3300B76940 /* CreateActivityView.swift */; };
+		A3729C68220B9FCD00B76940 /* CreateActivityViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3729C67220B9FCD00B76940 /* CreateActivityViewTests.swift */; };
 		A3DA483F2203B938007706C1 /* TimerControlUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DA483E2203B938007706C1 /* TimerControlUIView.swift */; };
 		A3DA48412203BA07007706C1 /* TimerControlViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DA48402203BA07007706C1 /* TimerControlViewTests.swift */; };
 		A3F9BA9E21F4127F0001CED5 /* DataEntryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F9BA9D21F4127F0001CED5 /* DataEntryTextField.swift */; };
@@ -60,6 +63,9 @@
 		A341F6702201F87700214B35 /* DataEntryUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntryUIView.swift; sourceTree = "<group>"; };
 		A341F672220208A500214B35 /* QuickLogScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLogScrollView.swift; sourceTree = "<group>"; };
 		A341F674220221D900214B35 /* QuickLogScrollViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLogScrollViewTests.swift; sourceTree = "<group>"; };
+		A3729C63220B980900B76940 /* DataEntryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntryTableView.swift; sourceTree = "<group>"; };
+		A3729C65220B9F3300B76940 /* CreateActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateActivityView.swift; sourceTree = "<group>"; };
+		A3729C67220B9FCD00B76940 /* CreateActivityViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateActivityViewTests.swift; sourceTree = "<group>"; };
 		A3DA483E2203B938007706C1 /* TimerControlUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerControlUIView.swift; sourceTree = "<group>"; };
 		A3DA48402203BA07007706C1 /* TimerControlViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerControlViewTests.swift; sourceTree = "<group>"; };
 		A3F9BA9D21F4127F0001CED5 /* DataEntryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntryTextField.swift; sourceTree = "<group>"; };
@@ -166,6 +172,8 @@
 				A341F6702201F87700214B35 /* DataEntryUIView.swift */,
 				A341F672220208A500214B35 /* QuickLogScrollView.swift */,
 				A3DA483E2203B938007706C1 /* TimerControlUIView.swift */,
+				A3729C63220B980900B76940 /* DataEntryTableView.swift */,
+				A3729C65220B9F3300B76940 /* CreateActivityView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -191,6 +199,7 @@
 			children = (
 				A341F674220221D900214B35 /* QuickLogScrollViewTests.swift */,
 				A3DA48402203BA07007706C1 /* TimerControlViewTests.swift */,
+				A3729C67220B9FCD00B76940 /* CreateActivityViewTests.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -369,6 +378,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3729C64220B980900B76940 /* DataEntryTableView.swift in Sources */,
+				A3729C66220B9F3300B76940 /* CreateActivityView.swift in Sources */,
 				A303136A21EFD6C800AC1987 /* TimedInterval.swift in Sources */,
 				A341F6712201F87700214B35 /* DataEntryUIView.swift in Sources */,
 				A303134421EF8A6500AC1987 /* AppDelegate.swift in Sources */,
@@ -385,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A341F675220221D900214B35 /* QuickLogScrollViewTests.swift in Sources */,
+				A3729C68220B9FCD00B76940 /* CreateActivityViewTests.swift in Sources */,
 				A3DA48412203BA07007706C1 /* TimerControlViewTests.swift in Sources */,
 				A303136421EFD64A00AC1987 /* TimedIntervalTests.swift in Sources */,
 				A303137121EFE77300AC1987 /* ActivityTests.swift in Sources */,
