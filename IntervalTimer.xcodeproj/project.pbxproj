@@ -26,6 +26,8 @@
 		A3DA48412203BA07007706C1 /* TimerControlViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DA48402203BA07007706C1 /* TimerControlViewTests.swift */; };
 		A3EF5060220CE79500AFBD0E /* DataEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF505F220CE79500AFBD0E /* DataEntryTableViewCell.swift */; };
 		A3EF5062220CE7C300AFBD0E /* DataEntryTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5061220CE7C300AFBD0E /* DataEntryTableViewCellTests.swift */; };
+		A3EF5064220DDEF300AFBD0E /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5063220DDEF300AFBD0E /* FooterView.swift */; };
+		A3EF5066220DDF0100AFBD0E /* FooterViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5065220DDF0100AFBD0E /* FooterViewTests.swift */; };
 		A3F9BA9E21F4127F0001CED5 /* DataEntryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F9BA9D21F4127F0001CED5 /* DataEntryTextField.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +68,8 @@
 		A3DA48402203BA07007706C1 /* TimerControlViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerControlViewTests.swift; sourceTree = "<group>"; };
 		A3EF505F220CE79500AFBD0E /* DataEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntryTableViewCell.swift; sourceTree = "<group>"; };
 		A3EF5061220CE7C300AFBD0E /* DataEntryTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntryTableViewCellTests.swift; sourceTree = "<group>"; };
+		A3EF5063220DDEF300AFBD0E /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		A3EF5065220DDF0100AFBD0E /* FooterViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterViewTests.swift; sourceTree = "<group>"; };
 		A3F9BA9D21F4127F0001CED5 /* DataEntryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntryTextField.swift; sourceTree = "<group>"; };
 		AB9004FCD0A9A2F12CDF8283 /* Pods-IntervalTimerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntervalTimerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IntervalTimerTests/Pods-IntervalTimerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,6 +175,7 @@
 				A3DA483E2203B938007706C1 /* TimerControlUIView.swift */,
 				A3729C65220B9F3300B76940 /* CreateActivityView.swift */,
 				A3EF505F220CE79500AFBD0E /* DataEntryTableViewCell.swift */,
+				A3EF5063220DDEF300AFBD0E /* FooterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 				A3DA48402203BA07007706C1 /* TimerControlViewTests.swift */,
 				A3729C67220B9FCD00B76940 /* CreateActivityViewTests.swift */,
 				A3EF5061220CE7C300AFBD0E /* DataEntryTableViewCellTests.swift */,
+				A3EF5065220DDF0100AFBD0E /* FooterViewTests.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -378,6 +384,7 @@
 				A3729C66220B9F3300B76940 /* CreateActivityView.swift in Sources */,
 				A303136A21EFD6C800AC1987 /* TimedInterval.swift in Sources */,
 				A341F6712201F87700214B35 /* DataEntryUIView.swift in Sources */,
+				A3EF5064220DDEF300AFBD0E /* FooterView.swift in Sources */,
 				A3EF5060220CE79500AFBD0E /* DataEntryTableViewCell.swift in Sources */,
 				A303134421EF8A6500AC1987 /* AppDelegate.swift in Sources */,
 				A303137321EFE7C900AC1987 /* Activity.swift in Sources */,
@@ -393,6 +400,7 @@
 			files = (
 				A3EF5062220CE7C300AFBD0E /* DataEntryTableViewCellTests.swift in Sources */,
 				A3729C68220B9FCD00B76940 /* CreateActivityViewTests.swift in Sources */,
+				A3EF5066220DDF0100AFBD0E /* FooterViewTests.swift in Sources */,
 				A3DA48412203BA07007706C1 /* TimerControlViewTests.swift in Sources */,
 				A303136421EFD64A00AC1987 /* TimedIntervalTests.swift in Sources */,
 				A303137121EFE77300AC1987 /* ActivityTests.swift in Sources */,

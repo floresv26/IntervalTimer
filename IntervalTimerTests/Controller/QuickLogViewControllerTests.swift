@@ -64,5 +64,16 @@ class QuickLogViewControllerTests: XCTestCase {
         XCTAssertNil(sut.dataEntryTableView)
     }
     
+    func test_DataEntryTableView_Footer_IsNotNil() {
+        sut.createActivityView.activityNameTextField.text = "Test"
+        sut.createActivityView.addButton.sendActions(for: .touchUpInside)
+        
+        XCTAssertNotNil(sut.dataEntryTableView.tableFooterView)
+    }
+    
+//    func test_DataEntryTableView_Footer_IsFooterView() {
+//        XCTAssertNotNil(sut.dataEntryTableView.footerView(forSection: 0))
+//    }
+    
 
 }

@@ -88,6 +88,8 @@ class QuickLogViewController: UIViewController {
         dataEntryTableView.dataSource = self
         
         dataEntryTableView.rowHeight = 118
+        
+        addFooterToTableView()
     }
     
     func displayDataEntryTableView() {
@@ -98,6 +100,15 @@ class QuickLogViewController: UIViewController {
         dataEntryTableView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
         dataEntryTableView.topAnchor.constraint(equalTo: createActivityView.safeAreaLayoutGuide.bottomAnchor).isActive = true
         dataEntryTableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+    }
+    
+    func addFooterToTableView() {
+        let footerView = FooterView(frame: CGRect(x: 0,
+                                                  y: 0,
+                                                  width: screenSize.width,
+                                                  height: 50))
+        footerView.backgroundColor = UIColor.orange
+        dataEntryTableView.tableFooterView = footerView
     }
     
     func addIntervalToTimedIntervals() {
@@ -174,6 +185,7 @@ extension QuickLogViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! DataEntryTableViewCell
         print("Row:  \(indexPath.row)")
+        print(timedIntervals[indexPath.row])
         let interval = timedIntervals[indexPath.row]
         
         return cell
