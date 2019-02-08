@@ -22,7 +22,7 @@ class TimedIntervalTests: XCTestCase {
     }
 
     func test_TimedIntervalObject_CanBeInitialized() {
-        let timedInterval = TimedInterval(title: "Jab", hour: 0, minute: 1, second: 0, timestamp: Date())
+        let timedInterval = TimedInterval(title: "Jab", hour: 0, minute: 1, second: 0, timestamp: Date(), completed: false)
         
         XCTAssertEqual(timedInterval.title, "Jab")
         XCTAssertEqual(timedInterval.hour, 0)

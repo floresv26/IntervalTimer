@@ -16,6 +16,7 @@ class TimedInterval: Object {
     @objc dynamic var minute: Int
     @objc dynamic var second: Int
     @objc dynamic var timeStamp: Date
+    @objc dynamic var completed: Bool
     
     required init() {
         self.title = ""
@@ -23,17 +24,19 @@ class TimedInterval: Object {
         self.minute = 0
         self.second = 0
         self.timeStamp = Date()
+        self.completed = false
         
         super.init()
     }
     
-    convenience required init(title: String, hour: Int, minute: Int, second: Int, timestamp: Date) {
+    convenience required init(title: String, hour: Int, minute: Int, second: Int, timestamp: Date, completed: Bool) {
         self.init()
         self.title = title
         self.hour = hour
         self.minute = minute
         self.second = second
         self.timeStamp = timestamp
+        self.completed = completed
     }
     
     required init(realm: RLMRealm, schema: RLMObjectSchema) {

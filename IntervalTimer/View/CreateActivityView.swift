@@ -10,6 +10,8 @@ import UIKit
 
 class CreateActivityView: UIView {
     
+    weak var delegate: QuickLogViewController?
+    
 //  let screenSize = UIScreen.main.bounds.size
 
     override init(frame: CGRect) {
@@ -22,7 +24,7 @@ class CreateActivityView: UIView {
     }
     
     lazy var addButton: UIButton = {
-        let button = UIButton(type: UIButton.ButtonType.custom)
+        let button = UIButton(type: UIButton.ButtonType.system)
         button.setImage(UIImage(named: "add_dark.png"), for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 24.0, height: 24.0)
         button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
@@ -77,14 +79,29 @@ class CreateActivityView: UIView {
     }
     
     @objc func addButtonTapped() {
-        validateTextInput(from: activityNameTextField)
-    }
-    
-    func validateTextInput(from textField: DataEntryTextField) {
-        guard let validatedText = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !validatedText.isEmpty else {
+        guard let validatedText = activityNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !validatedText.isEmpty else {
             return
         }
+        
+        displayActivityNameLabel(with: validatedText)
+        delegate?.enableCancelButton()
+        resetCreateActivityUI()
+        delegate?.displayDataEntryTableView()
+        delegate?.addIntervalToTimedIntervals()
     }
-
+    
+    func displayActivityNameLabel(with text: String) {
+        activityNameLabel.text = text
+        activityNameLabel.isHidden = false
+        activityNameTextField.isHidden = true
+        addButton.isHidden = true
+        
+        print(activityNameLabel.text)
+    }
+    
+    func resetCreateActivityUI() {
+        activityNameTextField.text = nil
+        addButton.isEnabled = false
+    }
 
 }

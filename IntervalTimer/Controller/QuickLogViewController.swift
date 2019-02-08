@@ -11,8 +11,12 @@ import RealmSwift
 
 class QuickLogViewController: UIViewController {
     
+    var timedIntervals: [TimedInterval] = []
+    let cellId = "DataEntryViewCell"
+    
     let screenSize = UIScreen.main.bounds.size
     var createActivityView: CreateActivityView!
+    var dataEntryTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +34,10 @@ class QuickLogViewController: UIViewController {
         createActivityView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
         createActivityView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         createActivityView.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+        
+        print(createActivityView.frame)
+        print(createActivityView.activityNameTextField.frame)
+        print(createActivityView.addButton.frame)
     }
     
     // MARK: - Realm
@@ -39,13 +47,10 @@ class QuickLogViewController: UIViewController {
     
     func initializeCreateActivityView() {
         createActivityView = CreateActivityView()
+        createActivityView.delegate = self
         createActivityView.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: 50.0)
         createActivityView.translatesAutoresizingMaskIntoConstraints = false
         createActivityView.activityNameTextField.delegate = self
-    }
-    
-    func setupActivityNameLabel(with text: String) {
-        
     }
     
     
@@ -54,16 +59,51 @@ class QuickLogViewController: UIViewController {
     func enableCancelButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonPressed))
     }
-
-    func removeCancelButton() {
-        navigationItem.rightBarButtonItem = nil
-    }
     
     @objc func cancelButtonPressed() {
-        
+        navigationItem.rightBarButtonItem = nil
+        displayCreateActivityView()
+        dataEntryTableView.isHidden = true
+        dataEntryTableView = nil
+        timedIntervals = []
     }
     
+    func displayCreateActivityView() {
+        createActivityView.activityNameLabel.isHidden = true
+        createActivityView.activityNameLabel.text = nil
+        createActivityView.activityNameTextField.isHidden = false
+        createActivityView.addButton.isHidden = false
+    }
+
     
+    // Mark: DataEntryTableView
+    
+    func initializeDataEntryTableView() {
+        dataEntryTableView = UITableView()
+        dataEntryTableView.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: 0)
+        dataEntryTableView.register(DataEntryTableViewCell.self, forCellReuseIdentifier: cellId)
+        dataEntryTableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        dataEntryTableView.delegate = self
+        dataEntryTableView.dataSource = self
+        
+        dataEntryTableView.rowHeight = 118
+    }
+    
+    func displayDataEntryTableView() {
+        initializeDataEntryTableView()
+        self.view.addSubview(dataEntryTableView)
+        dataEntryTableView.backgroundColor = UIColor.purple
+        dataEntryTableView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor).isActive = true
+        dataEntryTableView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        dataEntryTableView.topAnchor.constraint(equalTo: createActivityView.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        dataEntryTableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+    }
+    
+    func addIntervalToTimedIntervals() {
+        let timedInterval = TimedInterval()
+        timedIntervals.append(timedInterval)
+    }
     // TimerControlView
     
     
@@ -95,12 +135,50 @@ extension QuickLogViewController: UITextFieldDelegate {
                 return false
             }
             
-            setupActivityNameLabel(with: validatedText)
+            createActivityView.activityNameLabel.text = validatedText
+        }
+        
+        
+        
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == createActivityView.activityNameTextField {
+            textField.resignFirstResponder()
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == createActivityView.activityNameTextField {
+            createActivityView.displayActivityNameLabel(with: textField.text!)
             
+            enableCancelButton()
+            createActivityView.resetCreateActivityUI()
+            displayDataEntryTableView()
+            addIntervalToTimedIntervals()
         }
         
         return true
     }
 
+}
+
+// Mark: UITableViewDelegate, UITableViewDataSource
+
+extension QuickLogViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return timedIntervals.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! DataEntryTableViewCell
+        print("Row:  \(indexPath.row)")
+        let interval = timedIntervals[indexPath.row]
+        
+        return cell
+    }
+    
+    
 }
 

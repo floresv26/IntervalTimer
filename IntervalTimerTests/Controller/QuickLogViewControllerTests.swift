@@ -25,118 +25,44 @@ class QuickLogViewControllerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func test_CreateActivityStackView_AfterViewDidLoad_IsNotNil() {
-        XCTAssertNotNil(sut.createActivityStackView)
+    func test_CreateActivityView_AfterViewDidLoad_IsNotNil() {
+        XCTAssertNotNil(sut.createActivityView)
     }
     
-    func test_AddActivityTextField_AfterViewDidLoad_IsNotNil() {
-        XCTAssertNotNil(sut.addActivityTextField)
+    func test_CreateActivityView_AfterViewDidLoad_IsDescendantOfView() {
+        XCTAssertTrue(sut.createActivityView.isDescendant(of: sut.view))
     }
     
-    func test_AddActivityButton_AfterViewDidLoad_IsNotNil() {
-        XCTAssertNotNil(sut.addActivityButton)
+    func test_DataEntryTableView_AddButtonTapped_IsNotNil() {
+        sut.createActivityView.activityNameTextField.text = "Test Activity Name"
+        sut.createActivityView.addButton.sendActions(for: .touchUpInside)
+       
+        XCTAssertNotNil(sut.dataEntryTableView)
     }
     
-    func test_ActivityNameLabel_AfterViewDidLoad_IsHidden() {
-        XCTAssertTrue(sut.activityNameLabel.isHidden)
-    }
-    
-    func test_ActivityNameLabel_AfterAddActivityButtonPressed_IsSet() {
-        sut.addActivityTextField.text = "Test Activity Name"
-        sut.addActivityButton.sendActions(for: .touchUpInside)
+    func test_DataEntryTableView_AddButtonTapped_IsDescendantOfSut() {
+        sut.createActivityView.activityNameTextField.text = "Test Activity Name"
+        sut.createActivityView.addButton.sendActions(for: .touchUpInside)
         
-        XCTAssertEqual(sut.activityNameLabel.text, "Test Activity Name")
+        XCTAssertTrue(sut.dataEntryTableView.isDescendant(of: sut.view))
     }
     
-    func test_CreateActivityStackView_AfterAddButtonPressed_IsHidden() {
-        sut.addActivityTextField.text = "Test Activity Name"
-        sut.addActivityButton.sendActions(for: .touchUpInside)
+    func test_TimedInterval_AddButtonTapped_AddedToTimedIntervals() {
+        sut.createActivityView.activityNameTextField.text = "Test"
+        sut.createActivityView.addButton.sendActions(for: .touchUpInside)
         
-        XCTAssertTrue(sut.createActivityStackView.isHidden)
+        XCTAssertEqual(sut.timedIntervals.count, 1)
     }
     
-    func test_ActivityNameLabel_AfterAddButtonPressed_IsNotHidden() {
-        sut.addActivityTextField.text = "Test Activity Name"
-        sut.addActivityButton.sendActions(for: .touchUpInside)
-        
-        XCTAssertFalse(sut.activityNameLabel.isHidden)
-    }
-    
-    func test_ScrollView_AfterAddButtonPressed_IsNotHidden() {
-        sut.addActivityTextField.text = "Test Activity Name"
-        sut.addActivityButton.sendActions(for: .touchUpInside)
-        
-        XCTAssertFalse(sut.scrollView.isHidden)
-    }
-    
-    func test_CancelButton_AfterAddButtonPressed_IsNotNil() {
-        sut.addActivityTextField.text = "Test Activity Name"
-        sut.addActivityButton.sendActions(for: .touchUpInside)
-        
-        XCTAssertNotNil(sut.navigationItem.rightBarButtonItem)
-    }
-    
-    func test_ScrollView_AfterCancelButtonPressed_IsRemovedFromView() {
-        sut.addActivityTextField.text = "Test Activity Name"
-        sut.addActivityButton.sendActions(for: .touchUpInside)
+    func test_DataEntryTableView_CancelButtonTapped_IsNil() {
+        sut.createActivityView.activityNameTextField.text = "Test"
+        sut.createActivityView.addButton.sendActions(for: .touchUpInside)
         guard let action = sut.navigationItem.rightBarButtonItem?.action else {
             return XCTFail("The Cancel button doesn't have an action")
         }
         sut.navigationItem.rightBarButtonItem?.target?.perform(action)
-        XCTAssertNil(sut.scrollView)
-        
+        XCTAssertNil(sut.dataEntryTableView)
     }
     
-    func test_ActivityNameLabel_AfterCancelButtonPressed_IsHidden() {
-        sut.addActivityTextField.text = "Test Activity Name"
-        sut.addActivityButton.sendActions(for: .touchUpInside)
-        guard let action = sut.navigationItem.rightBarButtonItem?.action else {
-            return XCTFail("The Cancel button doesn't have an action")
-        }
-        sut.navigationItem.rightBarButtonItem?.target?.perform(action)
-        XCTAssertTrue(sut.activityNameLabel.isHidden)
-    }
-    
-    func test_CreateActivityStackView_AfterCancelButtonPressed_IsNotHidden() {
-        sut.addActivityTextField.text = "Test Activity Name"
-        sut.addActivityButton.sendActions(for: .touchUpInside)
-        guard let action = sut.navigationItem.rightBarButtonItem?.action else {
-            return XCTFail("The Cancel button doesn't have an action")
-        }
-        sut.navigationItem.rightBarButtonItem?.target?.perform(action)
-        XCTAssertTrue(sut.createActivityStackView.isHidden)
-    }
-    
-    func test_CancelButton_AfterCancelButtonPressed_IsRemoved() {
-        sut.addActivityTextField.text = "Test Activity Name"
-        sut.addActivityButton.sendActions(for: .touchUpInside)
-        guard let action = sut.navigationItem.rightBarButtonItem?.action else {
-            return XCTFail("The Cancel button doesn't have an action")
-        }
-        sut.navigationItem.rightBarButtonItem?.target?.perform(action)
-        XCTAssertNil(sut.navigationItem.rightBarButtonItem)
-    }
-    
-    func test_TimerControlView_AfterAddActivityButtonPressed_IsNotNil() {
-        sut.addActivityTextField.text = "Test Activity Name"
-        sut.addActivityButton.sendActions(for: .touchUpInside)
-        
-        XCTAssertNotNil(sut.timerControlView)
-    }
-    
-    func test_TimerControlView_AfterAddActivityButtonPressed_IsDescendantOfView() {
-        sut.addActivityTextField.text = "Test Activity Name"
-        sut.addActivityButton.sendActions(for: .touchUpInside)
-        
-        XCTAssertTrue(sut.timerControlView.isDescendant(of: sut.view))
-    }
-    
-//    func test_ActivityName_WriteDataToRealm_IsNotNil() {
-//        sut.setActivityName(name: "Cobra Bag")
-//        sut.addActivityToRealm(activity: sut.activity)
-//        
-//        XCTAssertEqual(sut.realm.objects(Activity.self).count, 1)
-//        
-//    }
 
 }

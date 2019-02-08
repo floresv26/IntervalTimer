@@ -44,5 +44,21 @@ class CreateActivityViewTests: XCTestCase {
     func test_ActivityNameLabel_WhenViewInitialized_IsDescendantOfView() {
         XCTAssertTrue(sut.activityNameLabel.isDescendant(of: sut))
     }
-
+    
+    func test_ActivityNameTFAndAddButton_AddButtonTapped_AreHidden() {
+        sut.activityNameTextField.text = "Test Activity Name"
+        sut.addButton.sendActions(for: .touchUpInside)
+        
+        XCTAssertTrue(sut.activityNameTextField.isHidden)
+        XCTAssertTrue(sut.addButton.isHidden)
+    }
+    
+    func test_ActivityNameLabelText_AddButtonTapped_IsHiddenFalse() {
+        sut.activityNameTextField.text = "Test Activity Name"
+        sut.addButton.sendActions(for: .touchUpInside)
+        
+        XCTAssertFalse(sut.activityNameLabel.isHidden)
+        XCTAssertEqual(sut.activityNameLabel.text, "Test Activity Name")
+    }
+    
 }

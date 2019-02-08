@@ -22,7 +22,7 @@ class ActivityTests: XCTestCase {
     }
 
     func test_Activity_CanBeInitialized() {
-        let timedInterval = TimedInterval(title: "Jab", hour: 0, minute: 1, second: 0, timestamp: Date())
+        let timedInterval = TimedInterval(title: "Jab", hour: 0, minute: 1, second: 0, timestamp: Date(), completed: false)
         let timedIntervalsArray = [timedInterval]
         let activity = Activity(name: "Cobra Bag", timestamp: Date(), timedIntervals: timedIntervalsArray)
         
